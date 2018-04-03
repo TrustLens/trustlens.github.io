@@ -16,7 +16,9 @@
 :packetAtt
       a       owl:ObjectProperty ;
       rdfs:comment "mqtt-plan:packetAtt links the mqtt-plan:ControlPacket to mqtt-plan:PacketAttribute."@en ;
-      rdfs:label "packetAtt"@en .
+      rdfs:domain :ControlPacket ;
+      rdfs:label "packetAtt"@en ;
+      rdfs:range :PacketAttribute .
 
 :Sender
       a       owl:Class ;
@@ -53,11 +55,6 @@
       rdfs:comment "A step describing a planned activity of sending an acknowledgment of a successfull unsubscription from specific topics to a  client. The client is described  as the mqtt-prov:Sender attribute and topics are described by the mqtt-plan:TopicFilter attribute associated with the mqtt-prov:ControlPacket which triggers this action or an action which generated mqtt-plan:ActionResult that triggers this action."@en ;
       rdfs:label "Unsubscribe Acknowledgment"@en ;
       rdfs:subClassOf :Acknowledgment .
-
-:responseAtt
-      a       owl:ObjectProperty ;
-      rdfs:comment "mqtt-plan:responseAtt links the mqtt-plan:ActionResult to mqtt-plan:ResultAttribute."@en ;
-      rdfs:label "responseAtt"@en .
 
 :Publish
       a       owl:Class ;
@@ -149,6 +146,13 @@ Should these features be required, they may be incorporated in future revisons o
       rdfs:label "Action Result"@en ;
       rdfs:subClassOf <http://purl.org/net/p-plan#Variable> .
 
+:resultAtt
+      a       owl:ObjectProperty ;
+      rdfs:comment "mqtt-plan:resultAtt links the mqtt-plan:ActionResult to mqtt-plan:ResultAttribute."@en ;
+      rdfs:domain :ActionResult ;
+      rdfs:label "resultAtt"@en ;
+      rdfs:range :ResultAttribute .
+
 :Message
       a       owl:Class ;
       rdfs:comment "A varible describing the payload of an mqtt-plan:ControlPacket containing  an application message. For example, a sensor reading."@en ;
@@ -157,7 +161,12 @@ Should these features be required, they may be incorporated in future revisons o
 
 :triggers
       a       owl:ObjectProperty ;
-      rdfs:label "triggers"@en .
+      rdfs:domain
+              [ a       owl:Class ;
+                owl:unionOf (:ActionResult :ControlPacket)
+              ] ;
+      rdfs:label "triggers"@en ;
+      rdfs:range :BrokerAction .
 
 :Reason
       a       owl:Class ;

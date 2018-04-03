@@ -2,6 +2,8 @@
 <http://w3id.org/mqtt-plan#Subscribe> <http://www.w3.org/2000/01/rdf-schema#comment> "A step describing a planned activity of subscribing a client from specific topics. The client is described  as the mqtt-prov:Sender of the mqtt-prov:ControlPacket which triggers this action. The topics for which the client is subscribed are described by the mqtt-plan:TopicFilter attribute associated with the mqtt-plan:ControlPacket triggering this action. This step represents an activity performed by the broker on internally maintained list of topic subscribtions, it does not imply any response is sent to the client. The acknowledgment of subscribing can be modeled with  mqtt-plan:SubscribeAcknowledgment broker action triggered by the mqtt-plan:ActionResult of this step."@en .
 <http://w3id.org/mqtt-plan#Subscribe> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/mqtt-plan#BrokerAction> .
 <http://w3id.org/mqtt-plan#Subscribe> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+_:AX2dX39ab5babX3aX1628c3bddeeX3aXX2dX7ffb <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:AX2dX39ab5babX3aX1628c3bddeeX3aXX2dX7ffa .
+_:AX2dX39ab5babX3aX1628c3bddeeX3aXX2dX7ffb <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://w3id.org/mqtt-plan#ActionResult> .
 <http://w3id.org/mqtt-plan#PingResponse> <http://www.w3.org/2000/01/rdf-schema#label> "Ping response"@en .
 <http://w3id.org/mqtt-plan#PingResponse> <http://www.w3.org/2000/01/rdf-schema#comment> "A step describing a planned activity of responding to a PING request from a client. The client is described  as the mqtt-prov:Sender of the mqtt-prov:ControlPacket which triggers this action."@en .
 <http://w3id.org/mqtt-plan#PingResponse> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/mqtt-plan#BrokerAction> .
@@ -24,8 +26,12 @@
 <http://w3id.org/mqtt-plan#TopicFilter> <http://www.w3.org/2000/01/rdf-schema#comment> "A variable describing the topic filter that is used by a client to subscribe to one or a set of topic."@en .
 <http://w3id.org/mqtt-plan#TopicFilter> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/mqtt-plan#PacketAttribute> .
 <http://w3id.org/mqtt-plan#TopicFilter> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+_:AX2dX39ab5babX3aX1628c3bddeeX3aXX2dX7ffa <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:AX2dX39ab5babX3aX1628c3bddeeX3aXX2dX7ffa <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://w3id.org/mqtt-plan#ControlPacket> .
 <http://w3id.org/mqtt-plan#packetAtt> <http://www.w3.org/2000/01/rdf-schema#label> "packetAtt"@en .
 <http://w3id.org/mqtt-plan#packetAtt> <http://www.w3.org/2000/01/rdf-schema#comment> "mqtt-plan:packetAtt links the mqtt-plan:ControlPacket to mqtt-plan:PacketAttribute."@en .
+<http://w3id.org/mqtt-plan#packetAtt> <http://www.w3.org/2000/01/rdf-schema#range> <http://w3id.org/mqtt-plan#PacketAttribute> .
+<http://w3id.org/mqtt-plan#packetAtt> <http://www.w3.org/2000/01/rdf-schema#domain> <http://w3id.org/mqtt-plan#ControlPacket> .
 <http://w3id.org/mqtt-plan#packetAtt> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
 <http://w3id.org/mqtt-plan#Reason> <http://www.w3.org/2000/01/rdf-schema#label> "Reason"@en .
 <http://w3id.org/mqtt-plan#Reason> <http://www.w3.org/2000/01/rdf-schema#comment> "A variable describing an mqtt-plan:ActionResult atribute denoting a reason for an mqtt-plan:BrokerAction that generated this action result.\n\nFor example, p-plan:Entities corresponding to this variable might describe a client's attempt to requerst a broker action for which it is not authorised (e.g. subscribing to a private topic)."@en .
@@ -79,12 +85,16 @@
 <http://w3id.org/mqtt-plan#Publish> <http://www.w3.org/2000/01/rdf-schema#comment> "A step describing a planned activity of forwarding a message from one client (sender) to all clients registered to receive messages under the specified topic. The sender is described  as the mqtt-prov:Sender of the mqtt-prov:ControlPacket which triggers this action. The topic is described by the mqtt-plan:TopicName attribute associated with the mqtt-plan:ControlPacket triggering this action. And the message of the topic can be described as mqtt-plan:Message attribute associated with the mqtt-plan:ControlPacket triggering this action.\n\nThis step represents an activity performed by the broker and implies that the message was forwarded to a single or multiple agents captured in the mqtt-plan:ActionResult of this step using mqtt-plan:AffectedAgent or mqtt-plan:AffectedAgents."@en .
 <http://w3id.org/mqtt-plan#Publish> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/mqtt-plan#BrokerAction> .
 <http://w3id.org/mqtt-plan#Publish> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<http://w3id.org/mqtt-plan#triggers> <http://www.w3.org/2000/01/rdf-schema#label> "triggers"@en .
-<http://w3id.org/mqtt-plan#triggers> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
 <http://w3id.org/mqtt-plan#SubscribeAcknowledgment> <http://www.w3.org/2000/01/rdf-schema#label> "Subscribe Acknowledgment"@en .
 <http://w3id.org/mqtt-plan#SubscribeAcknowledgment> <http://www.w3.org/2000/01/rdf-schema#comment> "A step describing a planned activity of sending an acknowledgment of a successfull subscription from specific topics to a  client. The client is described  as the mqtt-prov:Sender attribute and topics are described by the mqtt-plan:TopicFilter  attribute associated with the mqtt-prov:ControlPacket which triggers this action or an action which generated mqtt-plan:ActionResult that triggers this action."@en .
 <http://w3id.org/mqtt-plan#SubscribeAcknowledgment> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/mqtt-plan#Acknowledgment> .
 <http://w3id.org/mqtt-plan#SubscribeAcknowledgment> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://w3id.org/mqtt-plan#triggers> <http://www.w3.org/2000/01/rdf-schema#label> "triggers"@en .
+<http://w3id.org/mqtt-plan#triggers> <http://www.w3.org/2000/01/rdf-schema#range> <http://w3id.org/mqtt-plan#BrokerAction> .
+<http://w3id.org/mqtt-plan#triggers> <http://www.w3.org/2000/01/rdf-schema#domain> _:AX2dX39ab5babX3aX1628c3bddeeX3aXX2dX7ffc .
+<http://w3id.org/mqtt-plan#triggers> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+_:AX2dX39ab5babX3aX1628c3bddeeX3aXX2dX7ffc <http://www.w3.org/2002/07/owl#unionOf> _:AX2dX39ab5babX3aX1628c3bddeeX3aXX2dX7ffb .
+_:AX2dX39ab5babX3aX1628c3bddeeX3aXX2dX7ffc <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <http://w3id.org/mqtt-plan#KeepAlive> <http://www.w3.org/2000/01/rdf-schema#label> "Keep Alive"@en .
 <http://w3id.org/mqtt-plan#KeepAlive> <http://www.w3.org/2000/01/rdf-schema#comment> "A variable describing a maximum time interval (meassured in seconds) between two control packets sent by a client to prevent diconnection from the broker. \n\nNote: as per MQTT standard, value 0 means that this  feature should be deactivetated, however, broker still may close the connection if it determines the client is inactive or non-responsive regrdless of Keep Alive value provided."@en .
 <http://w3id.org/mqtt-plan#KeepAlive> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/mqtt-plan#PacketAttribute> .
@@ -93,6 +103,11 @@
 <http://w3id.org/mqtt-plan#Connect> <http://www.w3.org/2000/01/rdf-schema#comment> "A step describing a planned activity of connecting a client. The client is described  as the mqtt-prov:Sender of the mqtt-prov:ControlPacket which triggers this action."@en .
 <http://w3id.org/mqtt-plan#Connect> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/mqtt-plan#BrokerAction> .
 <http://w3id.org/mqtt-plan#Connect> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://w3id.org/mqtt-plan#resultAtt> <http://www.w3.org/2000/01/rdf-schema#label> "resultAtt"@en .
+<http://w3id.org/mqtt-plan#resultAtt> <http://www.w3.org/2000/01/rdf-schema#comment> "mqtt-plan:resultAtt links the mqtt-plan:ActionResult to mqtt-plan:ResultAttribute."@en .
+<http://w3id.org/mqtt-plan#resultAtt> <http://www.w3.org/2000/01/rdf-schema#range> <http://w3id.org/mqtt-plan#ResultAttribute> .
+<http://w3id.org/mqtt-plan#resultAtt> <http://www.w3.org/2000/01/rdf-schema#domain> <http://w3id.org/mqtt-plan#ActionResult> .
+<http://w3id.org/mqtt-plan#resultAtt> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
 <http://w3id.org/mqtt-plan#BrokerAction> <http://www.w3.org/2000/01/rdf-schema#label> "Broker Action"@en .
 <http://w3id.org/mqtt-plan#BrokerAction> <http://www.w3.org/2000/01/rdf-schema#comment> "An abstract concept representing a planned activity that broker performs in response to receiving an mqtt-plan:ControlPacket or as a result of some mqtt-plan:ActionResult produced by another mqtt-plan:BrokerAction."@en .
 <http://w3id.org/mqtt-plan#BrokerAction> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://purl.org/net/p-plan#Step> .
@@ -105,9 +120,6 @@
 <http://w3id.org/mqtt-plan#AffectedAgent> <http://www.w3.org/2000/01/rdf-schema#comment> "A variable describing a single agent associated with mqtt-plan:ActionResult. The mqtt-plan:BrokerAction that generated the action result must have been targeted on this agent. \n \nFor example, such agent can refer to the client that was disconnected by the mqtt-plan:Disconnect action."@en .
 <http://w3id.org/mqtt-plan#AffectedAgent> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/mqtt-plan#ResultAttribute> .
 <http://w3id.org/mqtt-plan#AffectedAgent> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<http://w3id.org/mqtt-plan#responseAtt> <http://www.w3.org/2000/01/rdf-schema#label> "responseAtt"@en .
-<http://w3id.org/mqtt-plan#responseAtt> <http://www.w3.org/2000/01/rdf-schema#comment> "mqtt-plan:responseAtt links the mqtt-plan:ActionResult to mqtt-plan:ResultAttribute."@en .
-<http://w3id.org/mqtt-plan#responseAtt> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
 <http://w3id.org/mqtt-plan#ActionResult> <http://www.w3.org/2000/01/rdf-schema#label> "Action Result"@en .
 <http://w3id.org/mqtt-plan#ActionResult> <http://www.w3.org/2000/01/rdf-schema#comment> "A variable describing an abstract result object of mqtt-plan:BrokerAction that can be further described by mqtt-plan:ResultAttribute."@en .
 <http://w3id.org/mqtt-plan#ActionResult> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://purl.org/net/p-plan#Variable> .
