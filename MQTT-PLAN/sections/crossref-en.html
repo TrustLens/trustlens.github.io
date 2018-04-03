@@ -1,0 +1,598 @@
+<h2  id="crossreference" class="list">Cross reference for mqtt-plan classes, properties and dataproperties <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+This section provides details for each class and property defined by mqtt-plan.
+<div id="classes">
+   <h3 id="classes" class="list">Classes</h3>
+   <ul class="hlist">
+      <li>
+         <a href="#Acknowledgment" title="http://w3id.org/mqtt-plan#Acknowledgment">Acknowledgment</a>
+      </li>
+      <li>
+         <a href="#ActionResult" title="http://w3id.org/mqtt-plan#ActionResult">Action Result</a>
+      </li>
+      <li>
+         <a href="#AffectedAgent" title="http://w3id.org/mqtt-plan#AffectedAgent">Affected Agent</a>
+      </li>
+      <li>
+         <a href="#AffectedAgents" title="http://w3id.org/mqtt-plan#AffectedAgents">Affected Agents</a>
+      </li>
+      <li>
+         <a href="#BrokerAction" title="http://w3id.org/mqtt-plan#BrokerAction">Broker Action</a>
+      </li>
+      <li>
+         <a href="#Connect" title="http://w3id.org/mqtt-plan#Connect">Connect</a>
+      </li>
+      <li>
+         <a href="#ConnectAcknowledgment" title="http://w3id.org/mqtt-plan#ConnectAcknowledgment">Connect Acknowledgment</a>
+      </li>
+      <li>
+         <a href="#ControlPacket" title="http://w3id.org/mqtt-plan#ControlPacket">Control Packet</a>
+      </li>
+      <li>
+         <a href="#Disconnect" title="http://w3id.org/mqtt-plan#Disconnect">Disconnect</a>
+      </li>
+      <li>
+         <a href="#KeepAlive" title="http://w3id.org/mqtt-plan#KeepAlive">Keep Alive</a>
+      </li>
+      <li>
+         <a href="#Message" title="http://w3id.org/mqtt-plan#Message">Message</a>
+      </li>
+      <li>
+         <a href="#PacketAttribute" title="http://w3id.org/mqtt-plan#PacketAttribute">Packet Attribute</a>
+      </li>
+      <li>
+         <a href="#PacketID" title="http://w3id.org/mqtt-plan#PacketID">Packet ID</a>
+      </li>
+      <li>
+         <a href="#PingResponse" title="http://w3id.org/mqtt-plan#PingResponse">Ping response</a>
+      </li>
+      <li>
+         <a href="#Publish" title="http://w3id.org/mqtt-plan#Publish">Publish</a>
+      </li>
+      <li>
+         <a href="#Reason" title="http://w3id.org/mqtt-plan#Reason">Reason</a>
+      </li>
+      <li>
+         <a href="#ResultAttribute" title="http://w3id.org/mqtt-plan#ResultAttribute">Result Attribute</a>
+      </li>
+      <li>
+         <a href="#Sender" title="http://w3id.org/mqtt-plan#Sender">Sender</a>
+      </li>
+      <li>
+         <a href="#Subscribe" title="http://w3id.org/mqtt-plan#Subscribe">Subscribe</a>
+      </li>
+      <li>
+         <a href="#SubscribeAcknowledgment"
+            title="http://w3id.org/mqtt-plan#SubscribeAcknowledgment">Subscribe Acknowledgment</a>
+      </li>
+      <li>
+         <a href="#TopicFilter" title="http://w3id.org/mqtt-plan#TopicFilter">Topic Filter</a>
+      </li>
+      <li>
+         <a href="#TopicName" title="http://w3id.org/mqtt-plan#TopicName">Topic Name</a>
+      </li>
+      <li>
+         <a href="#Unsubscribe" title="http://w3id.org/mqtt-plan#Unsubscribe">Unsubscribe</a>
+      </li>
+      <li>
+         <a href="#UnsubscribeAcknowledgment"
+            title="http://w3id.org/mqtt-plan#UnsubscribeAcknowledgment">Unsubscribe Acknowledgment</a>
+      </li>
+   </ul>
+   <div class="entity" id="Acknowledgment">
+      <h3>Acknowledgment<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://w3id.org/mqtt-plan#Acknowledgment</p>
+      <div class="comment">
+         <span class="markdown">A step describing a planned activity of sending an acknowledgment request to a  client. The client is described  as the mqtt-prov:Sender of the mqtt-prov:ControlPacket which triggers this action or an action whihc generated mqtt-plan:ActionResult that triggered this action.</span>
+      </div>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#BrokerAction" title="http://w3id.org/mqtt-plan#BrokerAction">Broker Action</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dt>has sub-classes</dt>
+         <dd>
+            <a href="#ConnectAcknowledgment" title="http://w3id.org/mqtt-plan#ConnectAcknowledgment">Connect Acknowledgment</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#SubscribeAcknowledgment"
+               title="http://w3id.org/mqtt-plan#SubscribeAcknowledgment">Subscribe Acknowledgment</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#UnsubscribeAcknowledgment"
+               title="http://w3id.org/mqtt-plan#UnsubscribeAcknowledgment">Unsubscribe Acknowledgment</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="ActionResult">
+      <h3>Action Result<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://w3id.org/mqtt-plan#ActionResult</p>
+      <div class="comment">
+         <span class="markdown">A variable describing an abstract result object of mqtt-plan:BrokerAction that can be further described by mqtt-plan:ResultAttribute.</span>
+      </div>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <span class="dotted" title="http://purl.org/net/p-plan#Variable">variable</span>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="AffectedAgent">
+      <h3>Affected Agent<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://w3id.org/mqtt-plan#AffectedAgent</p>
+      <div class="comment">
+         <span class="markdown">A variable describing a single agent associated with mqtt-plan:ActionResult. The mqtt-plan:BrokerAction that generated the action result must have been targeted on this agent. 
+ 
+For example, such agent can refer to the client that was disconnected by the mqtt-plan:Disconnect action.</span>
+      </div>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#ResultAttribute" title="http://w3id.org/mqtt-plan#ResultAttribute">Result Attribute</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="AffectedAgents">
+      <h3>Affected Agents<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://w3id.org/mqtt-plan#AffectedAgents</p>
+      <div class="comment">
+         <span class="markdown">A variable describing a collection of agents associated with mqtt-plan:ActionResult. The mqtt-plan:BrokerAction that generated the action result must have been targeted on all agents who are members of this collection. 
+ 
+For example,  such collection can describe the recipients to whom the broker forwarded a received message as part of mqtt-plan:Publish action.</span>
+      </div>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#ResultAttribute" title="http://w3id.org/mqtt-plan#ResultAttribute">Result Attribute</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="BrokerAction">
+      <h3>Broker Action<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://w3id.org/mqtt-plan#BrokerAction</p>
+      <div class="comment">
+         <span class="markdown">An abstract concept representing a planned activity that broker performs in response to receiving an mqtt-plan:ControlPacket or as a result of some mqtt-plan:ActionResult produced by another mqtt-plan:BrokerAction.</span>
+      </div>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <span class="dotted" title="http://purl.org/net/p-plan#Step">step</span>
+         </dd>
+         <dt>has sub-classes</dt>
+         <dd>
+            <a href="#Acknowledgment" title="http://w3id.org/mqtt-plan#Acknowledgment">Acknowledgment</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#Connect" title="http://w3id.org/mqtt-plan#Connect">Connect</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#Disconnect" title="http://w3id.org/mqtt-plan#Disconnect">Disconnect</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#PingResponse" title="http://w3id.org/mqtt-plan#PingResponse">Ping response</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#Publish" title="http://w3id.org/mqtt-plan#Publish">Publish</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#Subscribe" title="http://w3id.org/mqtt-plan#Subscribe">Subscribe</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#Unsubscribe" title="http://w3id.org/mqtt-plan#Unsubscribe">Unsubscribe</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="Connect">
+      <h3>Connect<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://w3id.org/mqtt-plan#Connect</p>
+      <div class="comment">
+         <span class="markdown">A step describing a planned activity of connecting a client. The client is described  as the mqtt-prov:Sender of the mqtt-prov:ControlPacket which triggers this action.</span>
+      </div>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#BrokerAction" title="http://w3id.org/mqtt-plan#BrokerAction">Broker Action</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="ConnectAcknowledgment">
+      <h3>Connect Acknowledgment<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://w3id.org/mqtt-plan#ConnectAcknowledgment</p>
+      <div class="comment">
+         <span class="markdown">A step describing a planned activity of sending an acknowledgment of a successfull connection request to a  client. The client is described  as the mqtt-prov:Sender of the mqtt-prov:ControlPacket which triggers this action or an action which generated mqtt-plan:ActionResult that triggers this action.</span>
+      </div>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#Acknowledgment" title="http://w3id.org/mqtt-plan#Acknowledgment">Acknowledgment</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="ControlPacket">
+      <h3>Control Packet<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://w3id.org/mqtt-plan#ControlPacket</p>
+      <div class="comment">
+         <span class="markdown">A variabale describing an MQTT control packet that has been interpreted and contextualised by the message broker (e.g. an explicit associations between the sender and the control packet are recorded even if such information is not present in the raw MQTT control packet structure).</span>
+      </div>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <span class="dotted" title="http://purl.org/net/p-plan#Variable">variable</span>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="Disconnect">
+      <h3>Disconnect<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://w3id.org/mqtt-plan#Disconnect</p>
+      <div class="comment">
+         <span class="markdown">A step describing a planned activity of disconnecting a client. The client is described  as the mqtt-prov:Sender of the mqtt-prov:ControlPacket which triggers this action. The mqtt-plan:ActionResult gennerated by this activity can include an mqtt-plan:Reason determining the cause of this action, for example, a failed authorisation.</span>
+      </div>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#BrokerAction" title="http://w3id.org/mqtt-plan#BrokerAction">Broker Action</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="KeepAlive">
+      <h3>Keep Alive<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://w3id.org/mqtt-plan#KeepAlive</p>
+      <div class="comment">
+         <span class="markdown">A variable describing a maximum time interval (meassured in seconds) between two control packets sent by a client to prevent diconnection from the broker. 
+
+Note: as per MQTT standard, value 0 means that this  feature should be deactivetated, however, broker still may close the connection if it determines the client is inactive or non-responsive regrdless of Keep Alive value provided.</span>
+      </div>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#PacketAttribute" title="http://w3id.org/mqtt-plan#PacketAttribute">Packet Attribute</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="Message">
+      <h3>Message<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://w3id.org/mqtt-plan#Message</p>
+      <div class="comment">
+         <span class="markdown">A varible describing the payload of an mqtt-plan:ControlPacket containing  an application message. For example, a sensor reading.</span>
+      </div>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#PacketAttribute" title="http://w3id.org/mqtt-plan#PacketAttribute">Packet Attribute</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="PacketAttribute">
+      <h3>Packet Attribute<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://w3id.org/mqtt-plan#PacketAttribute</p>
+      <div class="comment">
+         <span class="markdown">A variable representing a particular aspect of the mqtt-plan:ControlPacket.</span>
+      </div>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <span class="dotted" title="http://purl.org/net/p-plan#Variable">variable</span>
+         </dd>
+         <dt>has sub-classes</dt>
+         <dd>
+            <a href="#KeepAlive" title="http://w3id.org/mqtt-plan#KeepAlive">Keep Alive</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#Message" title="http://w3id.org/mqtt-plan#Message">Message</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#PacketID" title="http://w3id.org/mqtt-plan#PacketID">Packet ID</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#Sender" title="http://w3id.org/mqtt-plan#Sender">Sender</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#TopicFilter" title="http://w3id.org/mqtt-plan#TopicFilter">Topic Filter</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#TopicName" title="http://w3id.org/mqtt-plan#TopicName">Topic Name</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="PacketID">
+      <h3>Packet ID<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://w3id.org/mqtt-plan#PacketID</p>
+      <div class="comment">
+         <span class="markdown">A variable describing a 2 byte packet identifier associated with an mqtt-plan:ControlPacket (e.g. as part of topic subscription request). As per MQTT specification, packet identifiers used between a client and a broker can be reused once the acknowledgment of the packet has been sent.</span>
+      </div>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#PacketAttribute" title="http://w3id.org/mqtt-plan#PacketAttribute">Packet Attribute</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="PingResponse">
+      <h3>Ping response<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://w3id.org/mqtt-plan#PingResponse</p>
+      <div class="comment">
+         <span class="markdown">A step describing a planned activity of responding to a PING request from a client. The client is described  as the mqtt-prov:Sender of the mqtt-prov:ControlPacket which triggers this action.</span>
+      </div>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#BrokerAction" title="http://w3id.org/mqtt-plan#BrokerAction">Broker Action</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="Publish">
+      <h3>Publish<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://w3id.org/mqtt-plan#Publish</p>
+      <div class="comment">
+         <span class="markdown">A step describing a planned activity of forwarding a message from one client (sender) to all clients registered to receive messages under the specified topic. The sender is described  as the mqtt-prov:Sender of the mqtt-prov:ControlPacket which triggers this action. The topic is described by the mqtt-plan:TopicName attribute associated with the mqtt-plan:ControlPacket triggering this action. And the message of the topic can be described as mqtt-plan:Message attribute associated with the mqtt-plan:ControlPacket triggering this action.
+
+This step represents an activity performed by the broker and implies that the message was forwarded to a single or multiple agents captured in the mqtt-plan:ActionResult of this step using mqtt-plan:AffectedAgent or mqtt-plan:AffectedAgents.</span>
+      </div>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#BrokerAction" title="http://w3id.org/mqtt-plan#BrokerAction">Broker Action</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="Reason">
+      <h3>Reason<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://w3id.org/mqtt-plan#Reason</p>
+      <div class="comment">
+         <span class="markdown">A variable describing an mqtt-plan:ActionResult atribute denoting a reason for an mqtt-plan:BrokerAction that generated this action result.
+
+For example, p-plan:Entities corresponding to this variable might describe a client's attempt to requerst a broker action for which it is not authorised (e.g. subscribing to a private topic).</span>
+      </div>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#ResultAttribute" title="http://w3id.org/mqtt-plan#ResultAttribute">Result Attribute</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="ResultAttribute">
+      <h3>Result Attribute<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://w3id.org/mqtt-plan#ResultAttribute</p>
+      <div class="comment">
+         <span class="markdown">A variable representing a particular aspect of the mqtt-plan:ActionResult.</span>
+      </div>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <span class="dotted" title="http://purl.org/net/p-plan#Variable">variable</span>
+         </dd>
+         <dt>has sub-classes</dt>
+         <dd>
+            <a href="#AffectedAgent" title="http://w3id.org/mqtt-plan#AffectedAgent">Affected Agent</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#AffectedAgents" title="http://w3id.org/mqtt-plan#AffectedAgents">Affected Agents</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#Reason" title="http://w3id.org/mqtt-plan#Reason">Reason</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="Sender">
+      <h3>Sender<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://w3id.org/mqtt-plan#Sender</p>
+      <div class="comment">
+         <span class="markdown">A variable describing an agent responsible for sending an mqtt-plan:ControlPacket.</span>
+      </div>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#PacketAttribute" title="http://w3id.org/mqtt-plan#PacketAttribute">Packet Attribute</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="Subscribe">
+      <h3>Subscribe<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://w3id.org/mqtt-plan#Subscribe</p>
+      <div class="comment">
+         <span class="markdown">A step describing a planned activity of subscribing a client from specific topics. The client is described  as the mqtt-prov:Sender of the mqtt-prov:ControlPacket which triggers this action. The topics for which the client is subscribed are described by the mqtt-plan:TopicFilter attribute associated with the mqtt-plan:ControlPacket triggering this action. This step represents an activity performed by the broker on internally maintained list of topic subscribtions, it does not imply any response is sent to the client. The acknowledgment of subscribing can be modeled with  mqtt-plan:SubscribeAcknowledgment broker action triggered by the mqtt-plan:ActionResult of this step.</span>
+      </div>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#BrokerAction" title="http://w3id.org/mqtt-plan#BrokerAction">Broker Action</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="SubscribeAcknowledgment">
+      <h3>Subscribe Acknowledgment<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://w3id.org/mqtt-plan#SubscribeAcknowledgment</p>
+      <div class="comment">
+         <span class="markdown">A step describing a planned activity of sending an acknowledgment of a successfull subscription from specific topics to a  client. The client is described  as the mqtt-prov:Sender attribute and topics are described by the mqtt-plan:TopicFilter  attribute associated with the mqtt-prov:ControlPacket which triggers this action or an action which generated mqtt-plan:ActionResult that triggers this action.</span>
+      </div>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#Acknowledgment" title="http://w3id.org/mqtt-plan#Acknowledgment">Acknowledgment</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="TopicFilter">
+      <h3>Topic Filter<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://w3id.org/mqtt-plan#TopicFilter</p>
+      <div class="comment">
+         <span class="markdown">A variable describing the topic filter that is used by a client to subscribe to one or a set of topic.</span>
+      </div>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#PacketAttribute" title="http://w3id.org/mqtt-plan#PacketAttribute">Packet Attribute</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="TopicName">
+      <h3>Topic Name<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://w3id.org/mqtt-plan#TopicName</p>
+      <div class="comment">
+         <span class="markdown">A variable describing a topic name.</span>
+      </div>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#PacketAttribute" title="http://w3id.org/mqtt-plan#PacketAttribute">Packet Attribute</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="Unsubscribe">
+      <h3>Unsubscribe<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://w3id.org/mqtt-plan#Unsubscribe</p>
+      <div class="comment">
+         <span class="markdown">A step describing a planned activity of unsubscribing a client from specific topics. The client is described  as the mqtt-prov:Sender of the mqtt-prov:ControlPacket which triggers this action. The topics from which the client is unsubscribed are described by the mqtt-plan:TopicFilter attribute associated with the mqtt-plan:ControlPacket triggering this action. This step represents an activity performed by the broker on internally maintained list of topic subscribtions, it does not imply any response is sent to the client. The acknowledgment of unsubscribing can be modeled with  mqtt-plan:UnsubscribeAcknowledgment broker action triggered by the mqtt-plan:ActionResult of this step.</span>
+      </div>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#BrokerAction" title="http://w3id.org/mqtt-plan#BrokerAction">Broker Action</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+   <div class="entity" id="UnsubscribeAcknowledgment">
+      <h3>Unsubscribe Acknowledgment<sup class="type-c" title="class">c</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://w3id.org/mqtt-plan#UnsubscribeAcknowledgment</p>
+      <div class="comment">
+         <span class="markdown">A step describing a planned activity of sending an acknowledgment of a successfull unsubscription from specific topics to a  client. The client is described  as the mqtt-prov:Sender attribute and topics are described by the mqtt-plan:TopicFilter attribute associated with the mqtt-prov:ControlPacket which triggers this action or an action which generated mqtt-plan:ActionResult that triggers this action.</span>
+      </div>
+      <dl class="description">
+         <dt>has super-classes</dt>
+         <dd>
+            <a href="#Acknowledgment" title="http://w3id.org/mqtt-plan#Acknowledgment">Acknowledgment</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+      </dl>
+   </div>
+</div><div id="objectproperties">
+   <h3 id="properties" class="list">Object Properties</h3>
+   <ul class="hlist">
+      <li>
+         <a href="#packetAtt" title="http://w3id.org/mqtt-plan#packetAtt">packetAtt</a>
+      </li>
+      <li>
+         <a href="#responseAtt" title="http://w3id.org/mqtt-plan#responseAtt">responseAtt</a>
+      </li>
+      <li>
+         <a href="#triggers" title="http://w3id.org/mqtt-plan#triggers">triggers</a>
+      </li>
+   </ul>
+   <div class="entity" id="packetAtt">
+      <h3>packetAtt<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://w3id.org/mqtt-plan#packetAtt</p>
+      <div class="comment">
+         <span class="markdown">mqtt-plan:packetAtt links the mqtt-plan:ControlPacket to mqtt-plan:PacketAttribute.</span>
+      </div>
+   </div>
+   <div class="entity" id="responseAtt">
+      <h3>responseAtt<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://w3id.org/mqtt-plan#responseAtt</p>
+      <div class="comment">
+         <span class="markdown">mqtt-plan:responseAtt links the mqtt-plan:ActionResult to mqtt-plan:ResultAttribute.</span>
+      </div>
+   </div>
+   <div class="entity" id="triggers">
+      <h3>triggers<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://w3id.org/mqtt-plan#triggers</p>
+   </div>
+</div>
