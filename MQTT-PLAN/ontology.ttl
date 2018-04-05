@@ -22,17 +22,17 @@ mqtt-plan:UnsubscribeCP
               ] ;
       rdfs:subClassOf
               [ a       owl:Restriction ;
-                owl:maxQualifiedCardinality
-                        "1"^^xsd:nonNegativeInteger ;
-                owl:onClass mqtt-plan:PacketID ;
-                owl:onProperty mqtt-plan:packetAtt
-              ] ;
-      rdfs:subClassOf
-              [ a       owl:Restriction ;
                 owl:onClass mqtt-plan:Message ;
                 owl:onProperty mqtt-plan:packetAtt ;
                 owl:qualifiedCardinality
                         "0"^^xsd:nonNegativeInteger
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxQualifiedCardinality
+                        "1"^^xsd:nonNegativeInteger ;
+                owl:onClass mqtt-plan:TopicFilter ;
+                owl:onProperty mqtt-plan:packetAtt
               ] ;
       rdfs:subClassOf
               [ a       owl:Restriction ;
@@ -45,7 +45,7 @@ mqtt-plan:UnsubscribeCP
               [ a       owl:Restriction ;
                 owl:maxQualifiedCardinality
                         "1"^^xsd:nonNegativeInteger ;
-                owl:onClass mqtt-plan:TopicFilter ;
+                owl:onClass mqtt-plan:PacketID ;
                 owl:onProperty mqtt-plan:packetAtt
               ] .
 
@@ -76,6 +76,13 @@ mqtt-plan:PublishCP
       rdfs:subClassOf mqtt-plan:ControlPacket ;
       rdfs:subClassOf
               [ a       owl:Restriction ;
+                owl:onClass mqtt-plan:KeepAlive ;
+                owl:onProperty mqtt-plan:packetAtt ;
+                owl:qualifiedCardinality
+                        "0"^^xsd:nonNegativeInteger
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
                 owl:onClass mqtt-plan:TopicFilter ;
                 owl:onProperty mqtt-plan:packetAtt ;
                 owl:qualifiedCardinality
@@ -87,13 +94,6 @@ mqtt-plan:PublishCP
                         "1"^^xsd:nonNegativeInteger ;
                 owl:onClass mqtt-plan:Message ;
                 owl:onProperty mqtt-plan:packetAtt
-              ] ;
-      rdfs:subClassOf
-              [ a       owl:Restriction ;
-                owl:onClass mqtt-plan:KeepAlive ;
-                owl:onProperty mqtt-plan:packetAtt ;
-                owl:qualifiedCardinality
-                        "0"^^xsd:nonNegativeInteger
               ] ;
       rdfs:subClassOf
               [ a       owl:Restriction ;
@@ -130,6 +130,8 @@ mqtt-plan:ConnectAcknowledgment
 
 mqtt-plan:CompletionState
       a       owl:Class ;
+      rdfs:comment "A variable describing wheter a broker could complete the associated mqtt-plan:BrokerAction."@en ;
+      rdfs:label "Completion State"@en ;
       rdfs:subClassOf mqtt-plan:ResultAttribute .
 
 <http://w3id.org/mqtt-plan>
@@ -186,14 +188,14 @@ mqtt-plan:SubscribeCP
               [ a       owl:Restriction ;
                 owl:maxQualifiedCardinality
                         "1"^^xsd:nonNegativeInteger ;
-                owl:onClass mqtt-plan:TopicFilter ;
+                owl:onClass mqtt-plan:PacketID ;
                 owl:onProperty mqtt-plan:packetAtt
               ] ;
       rdfs:subClassOf
               [ a       owl:Restriction ;
                 owl:maxQualifiedCardinality
                         "1"^^xsd:nonNegativeInteger ;
-                owl:onClass mqtt-plan:PacketID ;
+                owl:onClass mqtt-plan:TopicFilter ;
                 owl:onProperty mqtt-plan:packetAtt
               ] ;
       rdfs:subClassOf
@@ -311,7 +313,21 @@ mqtt-plan:PingCP
       rdfs:subClassOf mqtt-plan:ControlPacket ;
       rdfs:subClassOf
               [ a       owl:Restriction ;
+                owl:onClass mqtt-plan:TopicFilter ;
+                owl:onProperty mqtt-plan:packetAtt ;
+                owl:qualifiedCardinality
+                        "0"^^xsd:nonNegativeInteger
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
                 owl:onClass mqtt-plan:TopicName ;
+                owl:onProperty mqtt-plan:packetAtt ;
+                owl:qualifiedCardinality
+                        "0"^^xsd:nonNegativeInteger
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:onClass mqtt-plan:KeepAlive ;
                 owl:onProperty mqtt-plan:packetAtt ;
                 owl:qualifiedCardinality
                         "0"^^xsd:nonNegativeInteger
@@ -326,20 +342,6 @@ mqtt-plan:PingCP
       rdfs:subClassOf
               [ a       owl:Restriction ;
                 owl:onClass mqtt-plan:PacketID ;
-                owl:onProperty mqtt-plan:packetAtt ;
-                owl:qualifiedCardinality
-                        "0"^^xsd:nonNegativeInteger
-              ] ;
-      rdfs:subClassOf
-              [ a       owl:Restriction ;
-                owl:onClass mqtt-plan:KeepAlive ;
-                owl:onProperty mqtt-plan:packetAtt ;
-                owl:qualifiedCardinality
-                        "0"^^xsd:nonNegativeInteger
-              ] ;
-      rdfs:subClassOf
-              [ a       owl:Restriction ;
-                owl:onClass mqtt-plan:TopicFilter ;
                 owl:onProperty mqtt-plan:packetAtt ;
                 owl:qualifiedCardinality
                         "0"^^xsd:nonNegativeInteger
@@ -385,6 +387,34 @@ mqtt-plan:ActionResult
               ] ;
       rdfs:subClassOf
               [ a       owl:Restriction ;
+                owl:onClass mqtt-plan:Unsubscribe ;
+                owl:onProperty mqtt-plan:triggers ;
+                owl:qualifiedCardinality
+                        "0"^^xsd:nonNegativeInteger
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:onClass mqtt-plan:PingResponse ;
+                owl:onProperty mqtt-plan:triggers ;
+                owl:qualifiedCardinality
+                        "0"^^xsd:nonNegativeInteger
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:onClass mqtt-plan:Publish ;
+                owl:onProperty mqtt-plan:triggers ;
+                owl:qualifiedCardinality
+                        "0"^^xsd:nonNegativeInteger
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxQualifiedCardinality
+                        "1"^^xsd:nonNegativeInteger ;
+                owl:onClass mqtt-plan:Reason ;
+                owl:onProperty mqtt-plan:resultAtt
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
                 owl:maxQualifiedCardinality
                         "1"^^xsd:nonNegativeInteger ;
                 owl:onClass mqtt-plan:Target ;
@@ -406,27 +436,6 @@ mqtt-plan:ActionResult
               ] ;
       rdfs:subClassOf
               [ a       owl:Restriction ;
-                owl:onClass mqtt-plan:Unsubscribe ;
-                owl:onProperty mqtt-plan:triggers ;
-                owl:qualifiedCardinality
-                        "0"^^xsd:nonNegativeInteger
-              ] ;
-      rdfs:subClassOf
-              [ a       owl:Restriction ;
-                owl:maxQualifiedCardinality
-                        "1"^^xsd:nonNegativeInteger ;
-                owl:onClass mqtt-plan:Reason ;
-                owl:onProperty mqtt-plan:resultAtt
-              ] ;
-      rdfs:subClassOf
-              [ a       owl:Restriction ;
-                owl:onClass mqtt-plan:Publish ;
-                owl:onProperty mqtt-plan:triggers ;
-                owl:qualifiedCardinality
-                        "0"^^xsd:nonNegativeInteger
-              ] ;
-      rdfs:subClassOf
-              [ a       owl:Restriction ;
                 owl:maxQualifiedCardinality
                         "1"^^xsd:nonNegativeInteger ;
                 owl:onClass mqtt-plan:Disconnect ;
@@ -435,13 +444,6 @@ mqtt-plan:ActionResult
       rdfs:subClassOf
               [ a       owl:Restriction ;
                 owl:onClass mqtt-plan:Connect ;
-                owl:onProperty mqtt-plan:triggers ;
-                owl:qualifiedCardinality
-                        "0"^^xsd:nonNegativeInteger
-              ] ;
-      rdfs:subClassOf
-              [ a       owl:Restriction ;
-                owl:onClass mqtt-plan:PingResponse ;
                 owl:onProperty mqtt-plan:triggers ;
                 owl:qualifiedCardinality
                         "0"^^xsd:nonNegativeInteger
@@ -470,6 +472,13 @@ mqtt-plan:ConnectCP
       rdfs:subClassOf mqtt-plan:ControlPacket ;
       rdfs:subClassOf
               [ a       owl:Restriction ;
+                owl:onClass mqtt-plan:Message ;
+                owl:onProperty mqtt-plan:packetAtt ;
+                owl:qualifiedCardinality
+                        "0"^^xsd:nonNegativeInteger
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
                 owl:onClass mqtt-plan:PacketID ;
                 owl:onProperty mqtt-plan:packetAtt ;
                 owl:qualifiedCardinality
@@ -478,13 +487,6 @@ mqtt-plan:ConnectCP
       rdfs:subClassOf
               [ a       owl:Restriction ;
                 owl:onClass mqtt-plan:TopicFilter ;
-                owl:onProperty mqtt-plan:packetAtt ;
-                owl:qualifiedCardinality
-                        "0"^^xsd:nonNegativeInteger
-              ] ;
-      rdfs:subClassOf
-              [ a       owl:Restriction ;
-                owl:onClass mqtt-plan:Message ;
                 owl:onProperty mqtt-plan:packetAtt ;
                 owl:qualifiedCardinality
                         "0"^^xsd:nonNegativeInteger
@@ -540,14 +542,14 @@ mqtt-plan:DisconnectCP
               ] ;
       rdfs:subClassOf
               [ a       owl:Restriction ;
-                owl:onClass mqtt-plan:KeepAlive ;
+                owl:onClass mqtt-plan:Message ;
                 owl:onProperty mqtt-plan:packetAtt ;
                 owl:qualifiedCardinality
                         "0"^^xsd:nonNegativeInteger
               ] ;
       rdfs:subClassOf
               [ a       owl:Restriction ;
-                owl:onClass mqtt-plan:Message ;
+                owl:onClass mqtt-plan:KeepAlive ;
                 owl:onProperty mqtt-plan:packetAtt ;
                 owl:qualifiedCardinality
                         "0"^^xsd:nonNegativeInteger
@@ -561,4 +563,6 @@ mqtt-plan:PingResponse
 
 mqtt-plan:Target
       a       owl:Class ;
+      rdfs:comment "A variable describing a client or group of clients affected by the associated  mqtt-plan:BrokerAction."@en ;
+      rdfs:label "Target"@en ;
       rdfs:subClassOf mqtt-plan:ResultAttribute .

@@ -19,9 +19,7 @@ This section provides details for each class and property defined by mqtt-plan.
          <a href="#BrokerAction" title="http://w3id.org/mqtt-plan#BrokerAction">Broker Action</a>
       </li>
       <li>
-         <a href="#CompletionState" title="http://w3id.org/mqtt-plan#CompletionState">
-            <span>completion state</span>
-         </a>
+         <a href="#CompletionState" title="http://w3id.org/mqtt-plan#CompletionState">Completion State</a>
       </li>
       <li>
          <a href="#Connect" title="http://w3id.org/mqtt-plan#Connect">Connect</a>
@@ -85,9 +83,7 @@ This section provides details for each class and property defined by mqtt-plan.
          <a href="#SubscribeCP" title="http://w3id.org/mqtt-plan#SubscribeCP">Subscribe CP</a>
       </li>
       <li>
-         <a href="#Target" title="http://w3id.org/mqtt-plan#Target">
-            <span>target</span>
-         </a>
+         <a href="#Target" title="http://w3id.org/mqtt-plan#Target">Target</a>
       </li>
       <li>
          <a href="#TopicFilter" title="http://w3id.org/mqtt-plan#TopicFilter">Topic Filter</a>
@@ -149,9 +145,15 @@ This section provides details for each class and property defined by mqtt-plan.
             <span class="dotted" title="http://purl.org/net/p-plan#Variable">variable</span>
          </dd>
          <dd>
-            <a href="#triggers" title="http://w3id.org/mqtt-plan#triggers">triggers</a>
+            <a href="#resultAtt" title="http://w3id.org/mqtt-plan#resultAtt">resultAtt</a>
             <sup class="type-op" title="object property">op</sup> 
-            <span class="logic">exactly</span> 0 <a href="#Subscribe" title="http://w3id.org/mqtt-plan#Subscribe">Subscribe</a>
+            <span class="logic">max</span> 1 <a href="#Reason" title="http://w3id.org/mqtt-plan#Reason">Reason</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dd>
+            <a href="#resultAtt" title="http://w3id.org/mqtt-plan#resultAtt">resultAtt</a>
+            <sup class="type-op" title="object property">op</sup> 
+            <span class="logic">min</span> 1 <a href="#CompletionState" title="http://w3id.org/mqtt-plan#CompletionState">Completion State</a>
             <sup class="type-c" title="class">c</sup>
          </dd>
          <dd>
@@ -161,33 +163,21 @@ This section provides details for each class and property defined by mqtt-plan.
             <sup class="type-c" title="class">c</sup>
          </dd>
          <dd>
-            <a href="#resultAtt" title="http://w3id.org/mqtt-plan#resultAtt">resultAtt</a>
-            <sup class="type-op" title="object property">op</sup> 
-            <span class="logic">max</span> 1 <a href="#Reason" title="http://w3id.org/mqtt-plan#Reason">Reason</a>
-            <sup class="type-c" title="class">c</sup>
-         </dd>
-         <dd>
-            <a href="#resultAtt" title="http://w3id.org/mqtt-plan#resultAtt">resultAtt</a>
-            <sup class="type-op" title="object property">op</sup> 
-            <span class="logic">max</span> 1 <a href="#Target" title="http://w3id.org/mqtt-plan#Target">target</a>
-            <sup class="type-c" title="class">c</sup>
-         </dd>
-         <dd>
-            <a href="#triggers" title="http://w3id.org/mqtt-plan#triggers">triggers</a>
-            <sup class="type-op" title="object property">op</sup> 
-            <span class="logic">exactly</span> 0 <a href="#PingResponse" title="http://w3id.org/mqtt-plan#PingResponse">Ping response</a>
-            <sup class="type-c" title="class">c</sup>
-         </dd>
-         <dd>
             <a href="#triggers" title="http://w3id.org/mqtt-plan#triggers">triggers</a>
             <sup class="type-op" title="object property">op</sup> 
             <span class="logic">max</span> 1 <a href="#Acknowledgment" title="http://w3id.org/mqtt-plan#Acknowledgment">Acknowledgment</a>
             <sup class="type-c" title="class">c</sup>
          </dd>
          <dd>
+            <a href="#triggers" title="http://w3id.org/mqtt-plan#triggers">triggers</a>
+            <sup class="type-op" title="object property">op</sup> 
+            <span class="logic">exactly</span> 0 <a href="#Connect" title="http://w3id.org/mqtt-plan#Connect">Connect</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dd>
             <a href="#resultAtt" title="http://w3id.org/mqtt-plan#resultAtt">resultAtt</a>
             <sup class="type-op" title="object property">op</sup> 
-            <span class="logic">min</span> 1 <a href="#CompletionState" title="http://w3id.org/mqtt-plan#CompletionState">completion state</a>
+            <span class="logic">max</span> 1 <a href="#Target" title="http://w3id.org/mqtt-plan#Target">Target</a>
             <sup class="type-c" title="class">c</sup>
          </dd>
          <dd>
@@ -199,7 +189,13 @@ This section provides details for each class and property defined by mqtt-plan.
          <dd>
             <a href="#triggers" title="http://w3id.org/mqtt-plan#triggers">triggers</a>
             <sup class="type-op" title="object property">op</sup> 
-            <span class="logic">exactly</span> 0 <a href="#Connect" title="http://w3id.org/mqtt-plan#Connect">Connect</a>
+            <span class="logic">exactly</span> 0 <a href="#PingResponse" title="http://w3id.org/mqtt-plan#PingResponse">Ping response</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dd>
+            <a href="#triggers" title="http://w3id.org/mqtt-plan#triggers">triggers</a>
+            <sup class="type-op" title="object property">op</sup> 
+            <span class="logic">exactly</span> 0 <a href="#Subscribe" title="http://w3id.org/mqtt-plan#Subscribe">Subscribe</a>
             <sup class="type-c" title="class">c</sup>
          </dd>
          <dd>
@@ -235,7 +231,7 @@ For example, such agent can refer to the client that was disconnected by the mqt
       <dl class="description">
          <dt>has super-classes</dt>
          <dd>
-            <a href="#Target" title="http://w3id.org/mqtt-plan#Target">target</a>
+            <a href="#Target" title="http://w3id.org/mqtt-plan#Target">Target</a>
             <sup class="type-c" title="class">c</sup>
          </dd>
       </dl>
@@ -255,7 +251,7 @@ For example,  such collection can describe the recipients to whom the broker for
       <dl class="description">
          <dt>has super-classes</dt>
          <dd>
-            <a href="#Target" title="http://w3id.org/mqtt-plan#Target">target</a>
+            <a href="#Target" title="http://w3id.org/mqtt-plan#Target">Target</a>
             <sup class="type-c" title="class">c</sup>
          </dd>
       </dl>
@@ -306,12 +302,15 @@ For example,  such collection can describe the recipients to whom the broker for
       </dl>
    </div>
    <div class="entity" id="CompletionState">
-      <h3>completion state<sup class="type-c" title="class">c</sup>
+      <h3>Completion State<sup class="type-c" title="class">c</sup>
          <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
          </span>
       </h3>
       <p>
          <strong>IRI:</strong> http://w3id.org/mqtt-plan#CompletionState</p>
+      <div class="comment">
+         <span class="markdown">A variable describing wheter a broker could complete the associated mqtt-plan:BrokerAction.</span>
+      </div>
       <dl class="description">
          <dt>has super-classes</dt>
          <dd>
@@ -375,19 +374,13 @@ For example,  such collection can describe the recipients to whom the broker for
          <dd>
             <a href="#packetAtt" title="http://w3id.org/mqtt-plan#packetAtt">packetAtt</a>
             <sup class="type-op" title="object property">op</sup> 
-            <span class="logic">max</span> 1 <a href="#KeepAlive" title="http://w3id.org/mqtt-plan#KeepAlive">Keep Alive</a>
-            <sup class="type-c" title="class">c</sup>
-         </dd>
-         <dd>
-            <a href="#packetAtt" title="http://w3id.org/mqtt-plan#packetAtt">packetAtt</a>
-            <sup class="type-op" title="object property">op</sup> 
             <span class="logic">exactly</span> 0 <a href="#TopicName" title="http://w3id.org/mqtt-plan#TopicName">Topic Name</a>
             <sup class="type-c" title="class">c</sup>
          </dd>
          <dd>
             <a href="#packetAtt" title="http://w3id.org/mqtt-plan#packetAtt">packetAtt</a>
             <sup class="type-op" title="object property">op</sup> 
-            <span class="logic">exactly</span> 0 <a href="#Message" title="http://w3id.org/mqtt-plan#Message">Message</a>
+            <span class="logic">exactly</span> 0 <a href="#TopicFilter" title="http://w3id.org/mqtt-plan#TopicFilter">Topic Filter</a>
             <sup class="type-c" title="class">c</sup>
          </dd>
          <dd>
@@ -399,7 +392,13 @@ For example,  such collection can describe the recipients to whom the broker for
          <dd>
             <a href="#packetAtt" title="http://w3id.org/mqtt-plan#packetAtt">packetAtt</a>
             <sup class="type-op" title="object property">op</sup> 
-            <span class="logic">exactly</span> 0 <a href="#TopicFilter" title="http://w3id.org/mqtt-plan#TopicFilter">Topic Filter</a>
+            <span class="logic">exactly</span> 0 <a href="#Message" title="http://w3id.org/mqtt-plan#Message">Message</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dd>
+            <a href="#packetAtt" title="http://w3id.org/mqtt-plan#packetAtt">packetAtt</a>
+            <sup class="type-op" title="object property">op</sup> 
+            <span class="logic">max</span> 1 <a href="#KeepAlive" title="http://w3id.org/mqtt-plan#KeepAlive">Keep Alive</a>
             <sup class="type-c" title="class">c</sup>
          </dd>
       </dl>
@@ -420,15 +419,15 @@ For example,  such collection can describe the recipients to whom the broker for
             <span class="dotted" title="http://purl.org/net/p-plan#Variable">variable</span>
          </dd>
          <dd>
-            <a href="#packetAtt" title="http://w3id.org/mqtt-plan#packetAtt">packetAtt</a>
-            <sup class="type-op" title="object property">op</sup> 
-            <span class="logic">max</span> 1 <a href="#Sender" title="http://w3id.org/mqtt-plan#Sender">Sender</a>
-            <sup class="type-c" title="class">c</sup>
-         </dd>
-         <dd>
             <a href="#triggers" title="http://w3id.org/mqtt-plan#triggers">triggers</a>
             <sup class="type-op" title="object property">op</sup> 
             <span class="logic">min</span> 1 <a href="#BrokerAction" title="http://w3id.org/mqtt-plan#BrokerAction">Broker Action</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dd>
+            <a href="#packetAtt" title="http://w3id.org/mqtt-plan#packetAtt">packetAtt</a>
+            <sup class="type-op" title="object property">op</sup> 
+            <span class="logic">max</span> 1 <a href="#Sender" title="http://w3id.org/mqtt-plan#Sender">Sender</a>
             <sup class="type-c" title="class">c</sup>
          </dd>
          <dt>has sub-classes</dt>
@@ -485,7 +484,7 @@ For example,  such collection can describe the recipients to whom the broker for
          <dd>
             <a href="#packetAtt" title="http://w3id.org/mqtt-plan#packetAtt">packetAtt</a>
             <sup class="type-op" title="object property">op</sup> 
-            <span class="logic">exactly</span> 0 <a href="#PacketID" title="http://w3id.org/mqtt-plan#PacketID">Packet ID</a>
+            <span class="logic">exactly</span> 0 <a href="#TopicName" title="http://w3id.org/mqtt-plan#TopicName">Topic Name</a>
             <sup class="type-c" title="class">c</sup>
          </dd>
          <dd>
@@ -497,13 +496,13 @@ For example,  such collection can describe the recipients to whom the broker for
          <dd>
             <a href="#packetAtt" title="http://w3id.org/mqtt-plan#packetAtt">packetAtt</a>
             <sup class="type-op" title="object property">op</sup> 
-            <span class="logic">exactly</span> 0 <a href="#KeepAlive" title="http://w3id.org/mqtt-plan#KeepAlive">Keep Alive</a>
+            <span class="logic">exactly</span> 0 <a href="#PacketID" title="http://w3id.org/mqtt-plan#PacketID">Packet ID</a>
             <sup class="type-c" title="class">c</sup>
          </dd>
          <dd>
             <a href="#packetAtt" title="http://w3id.org/mqtt-plan#packetAtt">packetAtt</a>
             <sup class="type-op" title="object property">op</sup> 
-            <span class="logic">exactly</span> 0 <a href="#TopicName" title="http://w3id.org/mqtt-plan#TopicName">Topic Name</a>
+            <span class="logic">exactly</span> 0 <a href="#KeepAlive" title="http://w3id.org/mqtt-plan#KeepAlive">Keep Alive</a>
             <sup class="type-c" title="class">c</sup>
          </dd>
          <dd>
@@ -622,7 +621,13 @@ Note: as per MQTT standard, value 0 means that this  feature should be deactivet
          <dd>
             <a href="#packetAtt" title="http://w3id.org/mqtt-plan#packetAtt">packetAtt</a>
             <sup class="type-op" title="object property">op</sup> 
-            <span class="logic">exactly</span> 0 <a href="#PacketID" title="http://w3id.org/mqtt-plan#PacketID">Packet ID</a>
+            <span class="logic">exactly</span> 0 <a href="#TopicFilter" title="http://w3id.org/mqtt-plan#TopicFilter">Topic Filter</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dd>
+            <a href="#packetAtt" title="http://w3id.org/mqtt-plan#packetAtt">packetAtt</a>
+            <sup class="type-op" title="object property">op</sup> 
+            <span class="logic">exactly</span> 0 <a href="#KeepAlive" title="http://w3id.org/mqtt-plan#KeepAlive">Keep Alive</a>
             <sup class="type-c" title="class">c</sup>
          </dd>
          <dd>
@@ -640,13 +645,7 @@ Note: as per MQTT standard, value 0 means that this  feature should be deactivet
          <dd>
             <a href="#packetAtt" title="http://w3id.org/mqtt-plan#packetAtt">packetAtt</a>
             <sup class="type-op" title="object property">op</sup> 
-            <span class="logic">exactly</span> 0 <a href="#KeepAlive" title="http://w3id.org/mqtt-plan#KeepAlive">Keep Alive</a>
-            <sup class="type-c" title="class">c</sup>
-         </dd>
-         <dd>
-            <a href="#packetAtt" title="http://w3id.org/mqtt-plan#packetAtt">packetAtt</a>
-            <sup class="type-op" title="object property">op</sup> 
-            <span class="logic">exactly</span> 0 <a href="#TopicFilter" title="http://w3id.org/mqtt-plan#TopicFilter">Topic Filter</a>
+            <span class="logic">exactly</span> 0 <a href="#PacketID" title="http://w3id.org/mqtt-plan#PacketID">Packet ID</a>
             <sup class="type-c" title="class">c</sup>
          </dd>
       </dl>
@@ -708,7 +707,7 @@ This step represents an activity performed by the broker and implies that the me
          <dd>
             <a href="#packetAtt" title="http://w3id.org/mqtt-plan#packetAtt">packetAtt</a>
             <sup class="type-op" title="object property">op</sup> 
-            <span class="logic">exactly</span> 0 <a href="#TopicFilter" title="http://w3id.org/mqtt-plan#TopicFilter">Topic Filter</a>
+            <span class="logic">max</span> 1 <a href="#TopicName" title="http://w3id.org/mqtt-plan#TopicName">Topic Name</a>
             <sup class="type-c" title="class">c</sup>
          </dd>
          <dd>
@@ -720,13 +719,13 @@ This step represents an activity performed by the broker and implies that the me
          <dd>
             <a href="#packetAtt" title="http://w3id.org/mqtt-plan#packetAtt">packetAtt</a>
             <sup class="type-op" title="object property">op</sup> 
-            <span class="logic">max</span> 1 <a href="#Message" title="http://w3id.org/mqtt-plan#Message">Message</a>
+            <span class="logic">exactly</span> 0 <a href="#TopicFilter" title="http://w3id.org/mqtt-plan#TopicFilter">Topic Filter</a>
             <sup class="type-c" title="class">c</sup>
          </dd>
          <dd>
             <a href="#packetAtt" title="http://w3id.org/mqtt-plan#packetAtt">packetAtt</a>
             <sup class="type-op" title="object property">op</sup> 
-            <span class="logic">max</span> 1 <a href="#TopicName" title="http://w3id.org/mqtt-plan#TopicName">Topic Name</a>
+            <span class="logic">max</span> 1 <a href="#Message" title="http://w3id.org/mqtt-plan#Message">Message</a>
             <sup class="type-c" title="class">c</sup>
          </dd>
          <dd>
@@ -774,9 +773,9 @@ For example, p-plan:Entities corresponding to this variable might describe a cli
          </dd>
          <dt>has sub-classes</dt>
          <dd>
-            <a href="#Reason" title="http://w3id.org/mqtt-plan#Reason">Reason</a>
-            <sup class="type-c" title="class">c</sup>, <a href="#CompletionState" title="http://w3id.org/mqtt-plan#CompletionState">completion state</a>
-            <sup class="type-c" title="class">c</sup>, <a href="#Target" title="http://w3id.org/mqtt-plan#Target">target</a>
+            <a href="#CompletionState" title="http://w3id.org/mqtt-plan#CompletionState">Completion State</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#Reason" title="http://w3id.org/mqtt-plan#Reason">Reason</a>
+            <sup class="type-c" title="class">c</sup>, <a href="#Target" title="http://w3id.org/mqtt-plan#Target">Target</a>
             <sup class="type-c" title="class">c</sup>
          </dd>
          <dt>is in range of</dt>
@@ -859,13 +858,19 @@ For example, p-plan:Entities corresponding to this variable might describe a cli
          <dd>
             <a href="#packetAtt" title="http://w3id.org/mqtt-plan#packetAtt">packetAtt</a>
             <sup class="type-op" title="object property">op</sup> 
-            <span class="logic">max</span> 1 <a href="#PacketID" title="http://w3id.org/mqtt-plan#PacketID">Packet ID</a>
+            <span class="logic">exactly</span> 0 <a href="#Message" title="http://w3id.org/mqtt-plan#Message">Message</a>
             <sup class="type-c" title="class">c</sup>
          </dd>
          <dd>
             <a href="#packetAtt" title="http://w3id.org/mqtt-plan#packetAtt">packetAtt</a>
             <sup class="type-op" title="object property">op</sup> 
-            <span class="logic">exactly</span> 0 <a href="#Message" title="http://w3id.org/mqtt-plan#Message">Message</a>
+            <span class="logic">exactly</span> 0 <a href="#KeepAlive" title="http://w3id.org/mqtt-plan#KeepAlive">Keep Alive</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dd>
+            <a href="#packetAtt" title="http://w3id.org/mqtt-plan#packetAtt">packetAtt</a>
+            <sup class="type-op" title="object property">op</sup> 
+            <span class="logic">max</span> 1 <a href="#PacketID" title="http://w3id.org/mqtt-plan#PacketID">Packet ID</a>
             <sup class="type-c" title="class">c</sup>
          </dd>
          <dd>
@@ -880,21 +885,18 @@ For example, p-plan:Entities corresponding to this variable might describe a cli
             <span class="logic">exactly</span> 0 <a href="#TopicName" title="http://w3id.org/mqtt-plan#TopicName">Topic Name</a>
             <sup class="type-c" title="class">c</sup>
          </dd>
-         <dd>
-            <a href="#packetAtt" title="http://w3id.org/mqtt-plan#packetAtt">packetAtt</a>
-            <sup class="type-op" title="object property">op</sup> 
-            <span class="logic">exactly</span> 0 <a href="#KeepAlive" title="http://w3id.org/mqtt-plan#KeepAlive">Keep Alive</a>
-            <sup class="type-c" title="class">c</sup>
-         </dd>
       </dl>
    </div>
    <div class="entity" id="Target">
-      <h3>target<sup class="type-c" title="class">c</sup>
+      <h3>Target<sup class="type-c" title="class">c</sup>
          <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
          </span>
       </h3>
       <p>
          <strong>IRI:</strong> http://w3id.org/mqtt-plan#Target</p>
+      <div class="comment">
+         <span class="markdown">A variable describing a client or group of clients affected by the associated  mqtt-plan:BrokerAction.</span>
+      </div>
       <dl class="description">
          <dt>has super-classes</dt>
          <dd>
@@ -1000,19 +1002,13 @@ For example, p-plan:Entities corresponding to this variable might describe a cli
          <dd>
             <a href="#packetAtt" title="http://w3id.org/mqtt-plan#packetAtt">packetAtt</a>
             <sup class="type-op" title="object property">op</sup> 
-            <span class="logic">exactly</span> 0 <a href="#Message" title="http://w3id.org/mqtt-plan#Message">Message</a>
-            <sup class="type-c" title="class">c</sup>
-         </dd>
-         <dd>
-            <a href="#packetAtt" title="http://w3id.org/mqtt-plan#packetAtt">packetAtt</a>
-            <sup class="type-op" title="object property">op</sup> 
-            <span class="logic">max</span> 1 <a href="#PacketID" title="http://w3id.org/mqtt-plan#PacketID">Packet ID</a>
-            <sup class="type-c" title="class">c</sup>
-         </dd>
-         <dd>
-            <a href="#packetAtt" title="http://w3id.org/mqtt-plan#packetAtt">packetAtt</a>
-            <sup class="type-op" title="object property">op</sup> 
             <span class="logic">max</span> 1 <a href="#TopicFilter" title="http://w3id.org/mqtt-plan#TopicFilter">Topic Filter</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dd>
+            <a href="#packetAtt" title="http://w3id.org/mqtt-plan#packetAtt">packetAtt</a>
+            <sup class="type-op" title="object property">op</sup> 
+            <span class="logic">exactly</span> 0 <a href="#KeepAlive" title="http://w3id.org/mqtt-plan#KeepAlive">Keep Alive</a>
             <sup class="type-c" title="class">c</sup>
          </dd>
          <dd>
@@ -1024,7 +1020,13 @@ For example, p-plan:Entities corresponding to this variable might describe a cli
          <dd>
             <a href="#packetAtt" title="http://w3id.org/mqtt-plan#packetAtt">packetAtt</a>
             <sup class="type-op" title="object property">op</sup> 
-            <span class="logic">exactly</span> 0 <a href="#KeepAlive" title="http://w3id.org/mqtt-plan#KeepAlive">Keep Alive</a>
+            <span class="logic">exactly</span> 0 <a href="#Message" title="http://w3id.org/mqtt-plan#Message">Message</a>
+            <sup class="type-c" title="class">c</sup>
+         </dd>
+         <dd>
+            <a href="#packetAtt" title="http://w3id.org/mqtt-plan#packetAtt">packetAtt</a>
+            <sup class="type-op" title="object property">op</sup> 
+            <span class="logic">max</span> 1 <a href="#PacketID" title="http://w3id.org/mqtt-plan#PacketID">Packet ID</a>
             <sup class="type-c" title="class">c</sup>
          </dd>
       </dl>
@@ -1077,12 +1079,12 @@ For example, p-plan:Entities corresponding to this variable might describe a cli
             <dt>has sub-property chains</dt>
             <dd> 
                <span class="logic">o</span> 
-               <a href="#packetAtt" title="http://w3id.org/mqtt-plan#packetAtt">packetAtt</a>
+               <a href="#resultAtt" title="http://w3id.org/mqtt-plan#resultAtt">resultAtt</a>
                <sup class="type-op" title="object property">op</sup>
             </dd>
             <dd> 
                <span class="logic">o</span> 
-               <a href="#resultAtt" title="http://w3id.org/mqtt-plan#resultAtt">resultAtt</a>
+               <a href="#packetAtt" title="http://w3id.org/mqtt-plan#packetAtt">packetAtt</a>
                <sup class="type-op" title="object property">op</sup>
             </dd>
          </dl>
