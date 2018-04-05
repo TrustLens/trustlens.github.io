@@ -1,126 +1,394 @@
-<http://w3id.org/mqtt-plan#Subscribe> <http://www.w3.org/2000/01/rdf-schema#label> "Subscribe"@en .
-<http://w3id.org/mqtt-plan#Subscribe> <http://www.w3.org/2000/01/rdf-schema#comment> "A step describing a planned activity of subscribing a client from specific topics. The client is described  as the mqtt-prov:Sender of the mqtt-prov:ControlPacket which triggers this action. The topics for which the client is subscribed are described by the mqtt-plan:TopicFilter attribute associated with the mqtt-plan:ControlPacket triggering this action. This step represents an activity performed by the broker on internally maintained list of topic subscribtions, it does not imply any response is sent to the client. The acknowledgment of subscribing can be modeled with  mqtt-plan:SubscribeAcknowledgment broker action triggered by the mqtt-plan:ActionResult of this step."@en .
-<http://w3id.org/mqtt-plan#Subscribe> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/mqtt-plan#BrokerAction> .
-<http://w3id.org/mqtt-plan#Subscribe> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:AX2dX39ab5babX3aX1628c3bddeeX3aXX2dX7ffb <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:AX2dX39ab5babX3aX1628c3bddeeX3aXX2dX7ffa .
-_:AX2dX39ab5babX3aX1628c3bddeeX3aXX2dX7ffb <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://w3id.org/mqtt-plan#ActionResult> .
-<http://w3id.org/mqtt-plan#PingResponse> <http://www.w3.org/2000/01/rdf-schema#label> "Ping response"@en .
-<http://w3id.org/mqtt-plan#PingResponse> <http://www.w3.org/2000/01/rdf-schema#comment> "A step describing a planned activity of responding to a PING request from a client. The client is described  as the mqtt-prov:Sender of the mqtt-prov:ControlPacket which triggers this action."@en .
-<http://w3id.org/mqtt-plan#PingResponse> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/mqtt-plan#BrokerAction> .
-<http://w3id.org/mqtt-plan#PingResponse> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<http://w3id.org/mqtt-plan> <http://purl.org/dc/terms/creator> "Milan Markovic"@en .
-<http://w3id.org/mqtt-plan> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Ontology> .
-<http://w3id.org/mqtt-plan> <http://www.w3.org/2002/07/owl#imports> <http://purl.org/net/p-plan#> .
-<http://w3id.org/mqtt-plan> <http://www.w3.org/2000/01/rdf-schema#comment> "The MQTT-PLAN ontology defines a set of concepts for describing plans of MQTT enabled message brokers. The vocabulary for plan descriptions forms an extension to the high level concepts defined in P-PLAN. Execution trace of such plans is then modelled using PROV-O.\n\nIn order to keep the vocabulary lightweight, this version of the ontology does not cover some of the functionalities specified in MQTT 3.1.1. These include: message attributes defining the required quality of service and associated acknowledgments, will messages,  retaining of messages by the server, session flags. Username and password flags are also not captured explicitly for security reasons.\n\nShould these features be required, they may be incorporated in future revisons of the ontology. Please contact the authors with your suggestions."@en .
-<http://w3id.org/mqtt-plan> <http://purl.org/dc/terms/license> "https://creativecommons.org/licenses/by-nc-sa/2.0/"@en .
-<http://w3id.org/mqtt-plan> <http://purl.org/dc/terms/creator> "Peter Edwards"@en .
-<http://w3id.org/mqtt-plan> <http://purl.org/dc/terms/creator> "David Corsar"@en .
-<http://w3id.org/mqtt-plan> <http://www.w3.org/2002/07/owl#imports> <http://www.w3.org/ns/prov-o-20130430> .
-<http://w3id.org/mqtt-plan> <http://purl.org/dc/terms/creator> "Waqar Asif"@en .
-<http://w3id.org/mqtt-plan> <http://www.w3.org/2002/07/owl#versionInfo> "Version 1.0"@en .
-<http://w3id.org/mqtt-plan#Disconnect> <http://www.w3.org/2000/01/rdf-schema#label> "Disconnect"@en .
-<http://w3id.org/mqtt-plan#Disconnect> <http://www.w3.org/2000/01/rdf-schema#comment> "A step describing a planned activity of disconnecting a client. The client is described  as the mqtt-prov:Sender of the mqtt-prov:ControlPacket which triggers this action. The mqtt-plan:ActionResult gennerated by this activity can include an mqtt-plan:Reason determining the cause of this action, for example, a failed authorisation."@en .
-<http://w3id.org/mqtt-plan#Disconnect> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/mqtt-plan#BrokerAction> .
-<http://w3id.org/mqtt-plan#Disconnect> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<http://w3id.org/mqtt-plan#TopicFilter> <http://www.w3.org/2000/01/rdf-schema#label> "Topic Filter"@en .
-<http://w3id.org/mqtt-plan#TopicFilter> <http://www.w3.org/2000/01/rdf-schema#comment> "A variable describing the topic filter that is used by a client to subscribe to one or a set of topic."@en .
-<http://w3id.org/mqtt-plan#TopicFilter> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/mqtt-plan#PacketAttribute> .
-<http://w3id.org/mqtt-plan#TopicFilter> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-_:AX2dX39ab5babX3aX1628c3bddeeX3aXX2dX7ffa <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-_:AX2dX39ab5babX3aX1628c3bddeeX3aXX2dX7ffa <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://w3id.org/mqtt-plan#ControlPacket> .
+<http://w3id.org/mqtt-plan#Connect> <http://www.w3.org/2000/01/rdf-schema#label> "Connect"@en .
+<http://w3id.org/mqtt-plan#Connect> <http://www.w3.org/2000/01/rdf-schema#comment> "A step describing a planned activity of connecting a client. The client is described  as the mqtt-prov:Sender of the mqtt-prov:ControlPacket which triggers this action."@en .
+<http://w3id.org/mqtt-plan#Connect> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/mqtt-plan#BrokerAction> .
+<http://w3id.org/mqtt-plan#Connect> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://w3id.org/mqtt-plan#Sender> <http://www.w3.org/2000/01/rdf-schema#label> "Sender"@en .
+<http://w3id.org/mqtt-plan#Sender> <http://www.w3.org/2000/01/rdf-schema#comment> "A variable describing an agent responsible for sending an mqtt-plan:ControlPacket."@en .
+<http://w3id.org/mqtt-plan#Sender> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/mqtt-plan#PacketAttribute> .
+<http://w3id.org/mqtt-plan#Sender> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <http://w3id.org/mqtt-plan#packetAtt> <http://www.w3.org/2000/01/rdf-schema#label> "packetAtt"@en .
 <http://w3id.org/mqtt-plan#packetAtt> <http://www.w3.org/2000/01/rdf-schema#comment> "mqtt-plan:packetAtt links the mqtt-plan:ControlPacket to mqtt-plan:PacketAttribute."@en .
 <http://w3id.org/mqtt-plan#packetAtt> <http://www.w3.org/2000/01/rdf-schema#range> <http://w3id.org/mqtt-plan#PacketAttribute> .
 <http://w3id.org/mqtt-plan#packetAtt> <http://www.w3.org/2000/01/rdf-schema#domain> <http://w3id.org/mqtt-plan#ControlPacket> .
 <http://w3id.org/mqtt-plan#packetAtt> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
-<http://w3id.org/mqtt-plan#Reason> <http://www.w3.org/2000/01/rdf-schema#label> "Reason"@en .
-<http://w3id.org/mqtt-plan#Reason> <http://www.w3.org/2000/01/rdf-schema#comment> "A variable describing an mqtt-plan:ActionResult atribute denoting a reason for an mqtt-plan:BrokerAction that generated this action result.\n\nFor example, p-plan:Entities corresponding to this variable might describe a client's attempt to requerst a broker action for which it is not authorised (e.g. subscribing to a private topic)."@en .
-<http://w3id.org/mqtt-plan#Reason> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/mqtt-plan#ResultAttribute> .
-<http://w3id.org/mqtt-plan#Reason> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<http://w3id.org/mqtt-plan#Message> <http://www.w3.org/2000/01/rdf-schema#label> "Message"@en .
-<http://w3id.org/mqtt-plan#Message> <http://www.w3.org/2000/01/rdf-schema#comment> "A varible describing the payload of an mqtt-plan:ControlPacket containing  an application message. For example, a sensor reading."@en .
-<http://w3id.org/mqtt-plan#Message> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/mqtt-plan#PacketAttribute> .
-<http://w3id.org/mqtt-plan#Message> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<http://w3id.org/mqtt-plan#Unsubscribe> <http://www.w3.org/2000/01/rdf-schema#label> "Unsubscribe"@en .
-<http://w3id.org/mqtt-plan#Unsubscribe> <http://www.w3.org/2000/01/rdf-schema#comment> "A step describing a planned activity of unsubscribing a client from specific topics. The client is described  as the mqtt-prov:Sender of the mqtt-prov:ControlPacket which triggers this action. The topics from which the client is unsubscribed are described by the mqtt-plan:TopicFilter attribute associated with the mqtt-plan:ControlPacket triggering this action. This step represents an activity performed by the broker on internally maintained list of topic subscribtions, it does not imply any response is sent to the client. The acknowledgment of unsubscribing can be modeled with  mqtt-plan:UnsubscribeAcknowledgment broker action triggered by the mqtt-plan:ActionResult of this step."@en .
-<http://w3id.org/mqtt-plan#Unsubscribe> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/mqtt-plan#BrokerAction> .
-<http://w3id.org/mqtt-plan#Unsubscribe> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<http://w3id.org/mqtt-plan#AffectedAgents> <http://www.w3.org/2000/01/rdf-schema#label> "Affected Agents"@en .
-<http://w3id.org/mqtt-plan#AffectedAgents> <http://www.w3.org/2000/01/rdf-schema#comment> "A variable describing a collection of agents associated with mqtt-plan:ActionResult. The mqtt-plan:BrokerAction that generated the action result must have been targeted on all agents who are members of this collection. \n \nFor example,  such collection can describe the recipients to whom the broker forwarded a received message as part of mqtt-plan:Publish action."@en .
-<http://w3id.org/mqtt-plan#AffectedAgents> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/mqtt-plan#ResultAttribute> .
-<http://w3id.org/mqtt-plan#AffectedAgents> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<http://w3id.org/mqtt-plan#Acknowledgment> <http://www.w3.org/2000/01/rdf-schema#label> "Acknowledgment"@en .
-<http://w3id.org/mqtt-plan#Acknowledgment> <http://www.w3.org/2000/01/rdf-schema#comment> "A step describing a planned activity of sending an acknowledgment request to a  client. The client is described  as the mqtt-prov:Sender of the mqtt-prov:ControlPacket which triggers this action or an action whihc generated mqtt-plan:ActionResult that triggered this action."@en .
-<http://w3id.org/mqtt-plan#Acknowledgment> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/mqtt-plan#BrokerAction> .
-<http://w3id.org/mqtt-plan#Acknowledgment> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<http://w3id.org/mqtt-plan#UnsubscribeAcknowledgment> <http://www.w3.org/2000/01/rdf-schema#label> "Unsubscribe Acknowledgment"@en .
-<http://w3id.org/mqtt-plan#UnsubscribeAcknowledgment> <http://www.w3.org/2000/01/rdf-schema#comment> "A step describing a planned activity of sending an acknowledgment of a successfull unsubscription from specific topics to a  client. The client is described  as the mqtt-prov:Sender attribute and topics are described by the mqtt-plan:TopicFilter attribute associated with the mqtt-prov:ControlPacket which triggers this action or an action which generated mqtt-plan:ActionResult that triggers this action."@en .
-<http://w3id.org/mqtt-plan#UnsubscribeAcknowledgment> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/mqtt-plan#Acknowledgment> .
-<http://w3id.org/mqtt-plan#UnsubscribeAcknowledgment> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<http://w3id.org/mqtt-plan#PacketAttribute> <http://www.w3.org/2000/01/rdf-schema#label> "Packet Attribute"@en .
-<http://w3id.org/mqtt-plan#PacketAttribute> <http://www.w3.org/2000/01/rdf-schema#comment> "A variable representing a particular aspect of the mqtt-plan:ControlPacket."@en .
-<http://w3id.org/mqtt-plan#PacketAttribute> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://purl.org/net/p-plan#Variable> .
-<http://w3id.org/mqtt-plan#PacketAttribute> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7ff2 <http://www.w3.org/2002/07/owl#onClass> <http://w3id.org/mqtt-plan#Connect> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7ff2 <http://www.w3.org/2002/07/owl#qualifiedCardinality> "0"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7ff2 <http://www.w3.org/2002/07/owl#onProperty> <http://w3id.org/mqtt-plan#triggers> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7ff2 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7feb <http://www.w3.org/2002/07/owl#onClass> <http://w3id.org/mqtt-plan#Acknowledgment> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7feb <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7feb <http://www.w3.org/2002/07/owl#onProperty> <http://w3id.org/mqtt-plan#triggers> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7feb <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+<http://w3id.org/mqtt-plan#Disconnect> <http://www.w3.org/2000/01/rdf-schema#label> "Disconnect"@en .
+<http://w3id.org/mqtt-plan#Disconnect> <http://www.w3.org/2000/01/rdf-schema#comment> "A step describing a planned activity of disconnecting a client. The client is described  as the mqtt-prov:Sender of the mqtt-prov:ControlPacket which triggers this action. The mqtt-plan:ActionResult gennerated by this activity can include an mqtt-plan:Reason determining the cause of this action, for example, a failed authorisation."@en .
+<http://w3id.org/mqtt-plan#Disconnect> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/mqtt-plan#BrokerAction> .
+<http://w3id.org/mqtt-plan#Disconnect> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fd7 <http://www.w3.org/2002/07/owl#onClass> <http://w3id.org/mqtt-plan#KeepAlive> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fd7 <http://www.w3.org/2002/07/owl#qualifiedCardinality> "0"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fd7 <http://www.w3.org/2002/07/owl#onProperty> <http://w3id.org/mqtt-plan#packetAtt> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fd7 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+<http://w3id.org/mqtt-plan#triggers> <http://www.w3.org/2000/01/rdf-schema#label> "triggers"@en .
+<http://w3id.org/mqtt-plan#triggers> <http://www.w3.org/2000/01/rdf-schema#comment> "mqtt-plan:trigers denotes that mqtt-plan:BrokerAction is executed as a result of plan variable describing mqtt-plan:ControlPacket or mqtt-plan:ActionResult."@en .
+<http://w3id.org/mqtt-plan#triggers> <http://www.w3.org/2000/01/rdf-schema#range> <http://w3id.org/mqtt-plan#BrokerAction> .
+<http://w3id.org/mqtt-plan#triggers> <http://www.w3.org/2000/01/rdf-schema#domain> _:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7ff6 .
+<http://w3id.org/mqtt-plan#triggers> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fd1 <http://www.w3.org/2002/07/owl#onClass> <http://w3id.org/mqtt-plan#Message> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fd1 <http://www.w3.org/2002/07/owl#qualifiedCardinality> "0"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fd1 <http://www.w3.org/2002/07/owl#onProperty> <http://w3id.org/mqtt-plan#packetAtt> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fd1 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fca <http://www.w3.org/2002/07/owl#onClass> <http://w3id.org/mqtt-plan#PacketID> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fca <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fca <http://www.w3.org/2002/07/owl#onProperty> <http://w3id.org/mqtt-plan#packetAtt> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fca <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fe4 <http://www.w3.org/2002/07/owl#onClass> <http://w3id.org/mqtt-plan#KeepAlive> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fe4 <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fe4 <http://www.w3.org/2002/07/owl#onProperty> <http://w3id.org/mqtt-plan#packetAtt> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fe4 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+<http://w3id.org/mqtt-plan#AffectedAgent> <http://www.w3.org/2000/01/rdf-schema#label> "Affected Agent"@en .
+<http://w3id.org/mqtt-plan#AffectedAgent> <http://www.w3.org/2000/01/rdf-schema#comment> "A variable describing a single agent associated with mqtt-plan:ActionResult. The mqtt-plan:BrokerAction that generated the action result must have been targeted on this agent. \n \nFor example, such agent can refer to the client that was disconnected by the mqtt-plan:Disconnect action."@en .
+<http://w3id.org/mqtt-plan#AffectedAgent> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/mqtt-plan#Target> .
+<http://w3id.org/mqtt-plan#AffectedAgent> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fdd <http://www.w3.org/2002/07/owl#onClass> <http://w3id.org/mqtt-plan#TopicName> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fdd <http://www.w3.org/2002/07/owl#qualifiedCardinality> "0"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fdd <http://www.w3.org/2002/07/owl#onProperty> <http://w3id.org/mqtt-plan#packetAtt> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fdd <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fc9 <http://www.w3.org/2002/07/owl#onClass> <http://w3id.org/mqtt-plan#TopicFilter> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fc9 <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fc9 <http://www.w3.org/2002/07/owl#onProperty> <http://w3id.org/mqtt-plan#packetAtt> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fc9 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7ff7 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7ff7 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://w3id.org/mqtt-plan#resultAtt> .
 <http://w3id.org/mqtt-plan#PacketID> <http://www.w3.org/2000/01/rdf-schema#label> "Packet ID"@en .
 <http://w3id.org/mqtt-plan#PacketID> <http://www.w3.org/2000/01/rdf-schema#comment> "A variable describing a 2 byte packet identifier associated with an mqtt-plan:ControlPacket (e.g. as part of topic subscription request). As per MQTT specification, packet identifiers used between a client and a broker can be reused once the acknowledgment of the packet has been sent."@en .
 <http://w3id.org/mqtt-plan#PacketID> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/mqtt-plan#PacketAttribute> .
 <http://w3id.org/mqtt-plan#PacketID> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<http://w3id.org/mqtt-plan#ControlPacket> <http://www.w3.org/2000/01/rdf-schema#label> "Control Packet"@en .
-<http://w3id.org/mqtt-plan#ControlPacket> <http://www.w3.org/2000/01/rdf-schema#comment> "A variabale describing an MQTT control packet that has been interpreted and contextualised by the message broker (e.g. an explicit associations between the sender and the control packet are recorded even if such information is not present in the raw MQTT control packet structure)."@en .
-<http://w3id.org/mqtt-plan#ControlPacket> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://purl.org/net/p-plan#Variable> .
-<http://w3id.org/mqtt-plan#ControlPacket> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<http://w3id.org/mqtt-plan#ResultAttribute> <http://www.w3.org/2000/01/rdf-schema#label> "Result Attribute"@en .
-<http://w3id.org/mqtt-plan#ResultAttribute> <http://www.w3.org/2000/01/rdf-schema#comment> "A variable representing a particular aspect of the mqtt-plan:ActionResult."@en .
-<http://w3id.org/mqtt-plan#ResultAttribute> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://purl.org/net/p-plan#Variable> .
-<http://w3id.org/mqtt-plan#ResultAttribute> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<http://w3id.org/mqtt-plan#TopicName> <http://www.w3.org/2000/01/rdf-schema#label> "Topic Name"@en .
-<http://w3id.org/mqtt-plan#TopicName> <http://www.w3.org/2000/01/rdf-schema#comment> "A variable describing a topic name."@en .
-<http://w3id.org/mqtt-plan#TopicName> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/mqtt-plan#PacketAttribute> .
-<http://w3id.org/mqtt-plan#TopicName> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<http://w3id.org/mqtt-plan#Sender> <http://www.w3.org/2000/01/rdf-schema#label> "Sender"@en .
-<http://w3id.org/mqtt-plan#Sender> <http://www.w3.org/2000/01/rdf-schema#comment> "A variable describing an agent responsible for sending an mqtt-plan:ControlPacket."@en .
-<http://w3id.org/mqtt-plan#Sender> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/mqtt-plan#PacketAttribute> .
-<http://w3id.org/mqtt-plan#Sender> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<http://w3id.org/mqtt-plan#Publish> <http://www.w3.org/2000/01/rdf-schema#label> "Publish"@en .
-<http://w3id.org/mqtt-plan#Publish> <http://www.w3.org/2000/01/rdf-schema#comment> "A step describing a planned activity of forwarding a message from one client (sender) to all clients registered to receive messages under the specified topic. The sender is described  as the mqtt-prov:Sender of the mqtt-prov:ControlPacket which triggers this action. The topic is described by the mqtt-plan:TopicName attribute associated with the mqtt-plan:ControlPacket triggering this action. And the message of the topic can be described as mqtt-plan:Message attribute associated with the mqtt-plan:ControlPacket triggering this action.\n\nThis step represents an activity performed by the broker and implies that the message was forwarded to a single or multiple agents captured in the mqtt-plan:ActionResult of this step using mqtt-plan:AffectedAgent or mqtt-plan:AffectedAgents."@en .
-<http://w3id.org/mqtt-plan#Publish> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/mqtt-plan#BrokerAction> .
-<http://w3id.org/mqtt-plan#Publish> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://w3id.org/mqtt-plan#CompletionState> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/mqtt-plan#ResultAttribute> .
+<http://w3id.org/mqtt-plan#CompletionState> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://w3id.org/mqtt-plan#AffectedAgents> <http://www.w3.org/2000/01/rdf-schema#label> "Affected Agents"@en .
+<http://w3id.org/mqtt-plan#AffectedAgents> <http://www.w3.org/2000/01/rdf-schema#comment> "A variable describing a collection of agents associated with mqtt-plan:ActionResult. The mqtt-plan:BrokerAction that generated the action result must have been targeted on all agents who are members of this collection. \n \nFor example,  such collection can describe the recipients to whom the broker forwarded a received message as part of mqtt-plan:Publish action."@en .
+<http://w3id.org/mqtt-plan#AffectedAgents> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/mqtt-plan#Target> .
+<http://w3id.org/mqtt-plan#AffectedAgents> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7ff1 <http://www.w3.org/2002/07/owl#onClass> <http://w3id.org/mqtt-plan#PingResponse> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7ff1 <http://www.w3.org/2002/07/owl#qualifiedCardinality> "0"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7ff1 <http://www.w3.org/2002/07/owl#onProperty> <http://w3id.org/mqtt-plan#triggers> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7ff1 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+<http://w3id.org/mqtt-plan#Message> <http://www.w3.org/2000/01/rdf-schema#label> "Message"@en .
+<http://w3id.org/mqtt-plan#Message> <http://www.w3.org/2000/01/rdf-schema#comment> "A varible describing the payload of an mqtt-plan:ControlPacket containing  an application message. For example, a sensor reading."@en .
+<http://w3id.org/mqtt-plan#Message> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/mqtt-plan#PacketAttribute> .
+<http://w3id.org/mqtt-plan#Message> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fea <http://www.w3.org/2002/07/owl#onClass> <http://w3id.org/mqtt-plan#Disconnect> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fea <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fea <http://www.w3.org/2002/07/owl#onProperty> <http://w3id.org/mqtt-plan#triggers> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fea <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+<http://w3id.org/mqtt-plan#ActionResult> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fea .
+<http://w3id.org/mqtt-plan#ActionResult> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fec .
+<http://w3id.org/mqtt-plan#ActionResult> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7ff0 .
+<http://w3id.org/mqtt-plan#ActionResult> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fed .
+<http://w3id.org/mqtt-plan#ActionResult> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7ff3 .
+<http://w3id.org/mqtt-plan#ActionResult> <http://www.w3.org/2000/01/rdf-schema#comment> "A variable describing an abstract result object of mqtt-plan:BrokerAction that can be further described by mqtt-plan:ResultAttribute."@en .
+<http://w3id.org/mqtt-plan#ActionResult> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7ff1 .
+<http://w3id.org/mqtt-plan#ActionResult> <http://www.w3.org/2000/01/rdf-schema#label> "Action Result"@en .
+<http://w3id.org/mqtt-plan#ActionResult> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://purl.org/net/p-plan#Variable> .
+<http://w3id.org/mqtt-plan#ActionResult> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7ff2 .
+<http://w3id.org/mqtt-plan#ActionResult> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7feb .
+<http://w3id.org/mqtt-plan#ActionResult> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://w3id.org/mqtt-plan#ActionResult> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fee .
+<http://w3id.org/mqtt-plan#ActionResult> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fef .
+<http://w3id.org/mqtt-plan#PingCP> <http://www.w3.org/2000/01/rdf-schema#label> "Ping CP"@en .
+<http://w3id.org/mqtt-plan#PingCP> <http://www.w3.org/2000/01/rdf-schema#comment> "A description of a control packet which indicates that a client is still active."@en .
+<http://w3id.org/mqtt-plan#PingCP> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fd8 .
+<http://w3id.org/mqtt-plan#PingCP> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fd9 .
+<http://w3id.org/mqtt-plan#PingCP> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fda .
+<http://w3id.org/mqtt-plan#PingCP> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fdb .
+<http://w3id.org/mqtt-plan#PingCP> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fdc .
+<http://w3id.org/mqtt-plan#PingCP> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/mqtt-plan#ControlPacket> .
+<http://w3id.org/mqtt-plan#PingCP> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fd6 <http://www.w3.org/2002/07/owl#onClass> <http://w3id.org/mqtt-plan#TopicFilter> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fd6 <http://www.w3.org/2002/07/owl#qualifiedCardinality> "0"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fd6 <http://www.w3.org/2002/07/owl#onProperty> <http://w3id.org/mqtt-plan#packetAtt> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fd6 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+<http://w3id.org/mqtt-plan#Target> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/mqtt-plan#ResultAttribute> .
+<http://w3id.org/mqtt-plan#Target> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fcf <http://www.w3.org/2002/07/owl#onClass> <http://w3id.org/mqtt-plan#PacketID> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fcf <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fcf <http://www.w3.org/2002/07/owl#onProperty> <http://w3id.org/mqtt-plan#packetAtt> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fcf <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+<http://w3id.org/mqtt-plan#UnsubscribeCP> <http://www.w3.org/2000/01/rdf-schema#label> "Unsubscribe CP"@en .
+<http://w3id.org/mqtt-plan#UnsubscribeCP> <http://www.w3.org/2000/01/rdf-schema#comment> "A description of a control packet which indicates that a client wants to unsubscribe from all topics matching the specified topic filter."@en .
+<http://w3id.org/mqtt-plan#UnsubscribeCP> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fc9 .
+<http://w3id.org/mqtt-plan#UnsubscribeCP> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fca .
+<http://w3id.org/mqtt-plan#UnsubscribeCP> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fcb .
+<http://w3id.org/mqtt-plan#UnsubscribeCP> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fcc .
+<http://w3id.org/mqtt-plan#UnsubscribeCP> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fcd .
+<http://w3id.org/mqtt-plan#UnsubscribeCP> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/mqtt-plan#ControlPacket> .
+<http://w3id.org/mqtt-plan#UnsubscribeCP> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fe9 <http://www.w3.org/2002/07/owl#onClass> <http://w3id.org/mqtt-plan#ActionResult> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fe9 <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fe9 <http://www.w3.org/2002/07/owl#onProperty> <http://w3id.org/mqtt-plan#hasActionResult> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fe9 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fd0 <http://www.w3.org/2002/07/owl#onClass> <http://w3id.org/mqtt-plan#TopicName> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fd0 <http://www.w3.org/2002/07/owl#qualifiedCardinality> "0"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fd0 <http://www.w3.org/2002/07/owl#onProperty> <http://w3id.org/mqtt-plan#packetAtt> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fd0 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+<http://w3id.org/mqtt-plan#Unsubscribe> <http://www.w3.org/2000/01/rdf-schema#label> "Unsubscribe"@en .
+<http://w3id.org/mqtt-plan#Unsubscribe> <http://www.w3.org/2000/01/rdf-schema#comment> "A step describing a planned activity of unsubscribing a client from specific topics. The client is described  as the mqtt-prov:Sender of the mqtt-prov:ControlPacket which triggers this action. The topics from which the client is unsubscribed are described by the mqtt-plan:TopicFilter attribute associated with the mqtt-plan:ControlPacket triggering this action. This step represents an activity performed by the broker on internally maintained list of topic subscribtions, it does not imply any response is sent to the client. The acknowledgment of unsubscribing can be modeled with  mqtt-plan:UnsubscribeAcknowledgment broker action triggered by the mqtt-plan:ActionResult of this step."@en .
+<http://w3id.org/mqtt-plan#Unsubscribe> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/mqtt-plan#BrokerAction> .
+<http://w3id.org/mqtt-plan#Unsubscribe> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fe3 <http://www.w3.org/2002/07/owl#onClass> <http://w3id.org/mqtt-plan#BrokerAction> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fe3 <http://www.w3.org/2002/07/owl#minQualifiedCardinality> "1"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fe3 <http://www.w3.org/2002/07/owl#onProperty> <http://w3id.org/mqtt-plan#triggers> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fe3 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+<http://w3id.org/mqtt-plan#hasActionInput> <http://www.w3.org/2000/01/rdf-schema#label> "hasActionInput"@en .
+<http://w3id.org/mqtt-plan#hasActionInput> <http://www.w3.org/2000/01/rdf-schema#comment> "mqtt-plan:hasActionInput links attributes of mqtt-plan:Control packet to mqtt-plan:BrokerAction."@en .
+<http://w3id.org/mqtt-plan#hasActionInput> <http://www.w3.org/2002/07/owl#propertyChainAxiom> _:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7ff9 .
+<http://w3id.org/mqtt-plan#hasActionInput> <http://www.w3.org/2002/07/owl#propertyChainAxiom> _:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7ffc .
+<http://w3id.org/mqtt-plan#hasActionInput> <http://www.w3.org/2000/01/rdf-schema#range> <http://w3id.org/mqtt-plan#PacketAttribute> .
+<http://w3id.org/mqtt-plan#hasActionInput> <http://www.w3.org/2000/01/rdf-schema#domain> <http://w3id.org/mqtt-plan#BrokerAction> .
+<http://w3id.org/mqtt-plan#hasActionInput> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://purl.org/net/p-plan#hasInputVar> .
+<http://w3id.org/mqtt-plan#hasActionInput> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fdc <http://www.w3.org/2002/07/owl#onClass> <http://w3id.org/mqtt-plan#KeepAlive> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fdc <http://www.w3.org/2002/07/owl#qualifiedCardinality> "0"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fdc <http://www.w3.org/2002/07/owl#onProperty> <http://w3id.org/mqtt-plan#packetAtt> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fdc <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7ff6 <http://www.w3.org/2002/07/owl#unionOf> _:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7ff5 .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7ff6 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://w3id.org/mqtt-plan> <http://purl.org/dc/terms/creator> "Milan Markovic"@en .
+<http://w3id.org/mqtt-plan> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Ontology> .
+<http://w3id.org/mqtt-plan> <http://www.w3.org/2002/07/owl#imports> <http://purl.org/net/p-plan#> .
+<http://w3id.org/mqtt-plan> <http://purl.org/dc/terms/license> "https://creativecommons.org/licenses/by-nc-sa/2.0/"@en .
+<http://w3id.org/mqtt-plan> <http://purl.org/dc/terms/creator> "Peter Edwards"@en .
+<http://w3id.org/mqtt-plan> <http://purl.org/dc/terms/creator> "David Corsar"@en .
+<http://w3id.org/mqtt-plan> <http://www.w3.org/2002/07/owl#imports> <http://www.w3.org/ns/prov-o-20130430> .
+<http://w3id.org/mqtt-plan> <http://www.w3.org/2000/01/rdf-schema#comment> "The MQTT-PLAN ontology defines a set of concepts for describing plans of MQTT enabled message brokers. The vocabulary for plan descriptions forms an extension to the high level concepts defined in P-PLAN. Execution trace of such plans is then modelled using PROV-O.\n\nIn order to keep the vocabulary lightweight, this version of the ontology does not cover some of the functionalities specified in MQTT 3.1.1. These include: publish attributes defining the required quality of service and associated acknowledgments, will messages,  retaining of messages by the server, session flags. Username and password flags are also not captured explicitly for security reasons.\n\nShould these features be required, they may be incorporated in future revisons of the ontology. Please contact the authors with your suggestions."@en .
+<http://w3id.org/mqtt-plan> <http://purl.org/dc/terms/creator> "Waqar Asif"@en .
+<http://w3id.org/mqtt-plan> <http://www.w3.org/2002/07/owl#versionInfo> "Version 1.0"@en .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fef <http://www.w3.org/2002/07/owl#onClass> <http://w3id.org/mqtt-plan#Subscribe> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fef <http://www.w3.org/2002/07/owl#qualifiedCardinality> "0"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fef <http://www.w3.org/2002/07/owl#onProperty> <http://w3id.org/mqtt-plan#triggers> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fef <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+<http://w3id.org/mqtt-plan#DisconnectCP> <http://www.w3.org/2000/01/rdf-schema#label> "Disconnect CP"@en .
+<http://w3id.org/mqtt-plan#DisconnectCP> <http://www.w3.org/2000/01/rdf-schema#comment> "A description of a control packet which indicates that a client wants to close a connection with a message broker."@en .
+<http://w3id.org/mqtt-plan#DisconnectCP> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fdd .
+<http://w3id.org/mqtt-plan#DisconnectCP> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fde .
+<http://w3id.org/mqtt-plan#DisconnectCP> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fdf .
+<http://w3id.org/mqtt-plan#DisconnectCP> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fe0 .
+<http://w3id.org/mqtt-plan#DisconnectCP> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fe1 .
+<http://w3id.org/mqtt-plan#DisconnectCP> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/mqtt-plan#ControlPacket> .
+<http://w3id.org/mqtt-plan#DisconnectCP> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://w3id.org/mqtt-plan#SubscribeCP> <http://www.w3.org/2000/01/rdf-schema#label> "Subscribe CP"@en .
+<http://w3id.org/mqtt-plan#SubscribeCP> <http://www.w3.org/2000/01/rdf-schema#comment> "A description of a control packet which indicates that a client wants to subscribe to all topics matching the specified topic filter."@en .
+<http://w3id.org/mqtt-plan#SubscribeCP> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fce .
+<http://w3id.org/mqtt-plan#SubscribeCP> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fcf .
+<http://w3id.org/mqtt-plan#SubscribeCP> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fd0 .
+<http://w3id.org/mqtt-plan#SubscribeCP> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fd1 .
+<http://w3id.org/mqtt-plan#SubscribeCP> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fd2 .
+<http://w3id.org/mqtt-plan#SubscribeCP> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/mqtt-plan#ControlPacket> .
+<http://w3id.org/mqtt-plan#SubscribeCP> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7ff0 <http://www.w3.org/2002/07/owl#onClass> <http://w3id.org/mqtt-plan#Publish> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7ff0 <http://www.w3.org/2002/07/owl#qualifiedCardinality> "0"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7ff0 <http://www.w3.org/2002/07/owl#onProperty> <http://w3id.org/mqtt-plan#triggers> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7ff0 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fd5 <http://www.w3.org/2002/07/owl#onClass> <http://w3id.org/mqtt-plan#Message> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fd5 <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fd5 <http://www.w3.org/2002/07/owl#onProperty> <http://w3id.org/mqtt-plan#packetAtt> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fd5 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7ffc <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7ffa .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7ffc <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7ffb .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fce <http://www.w3.org/2002/07/owl#onClass> <http://w3id.org/mqtt-plan#TopicFilter> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fce <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fce <http://www.w3.org/2002/07/owl#onProperty> <http://w3id.org/mqtt-plan#packetAtt> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fce <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+<http://w3id.org/mqtt-plan#UnsubscribeAcknowledgment> <http://www.w3.org/2000/01/rdf-schema#label> "Unsubscribe Acknowledgment"@en .
+<http://w3id.org/mqtt-plan#UnsubscribeAcknowledgment> <http://www.w3.org/2000/01/rdf-schema#comment> "A step describing a planned activity of sending an acknowledgment of a successfull unsubscription from specific topics to a  client. The client is described  as the mqtt-prov:Sender attribute and topics are described by the mqtt-plan:TopicFilter attribute associated with the mqtt-prov:ControlPacket which triggers this action or an action which generated mqtt-plan:ActionResult that triggers this action."@en .
+<http://w3id.org/mqtt-plan#UnsubscribeAcknowledgment> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/mqtt-plan#Acknowledgment> .
+<http://w3id.org/mqtt-plan#UnsubscribeAcknowledgment> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fe8 <http://www.w3.org/2002/07/owl#onClass> <http://w3id.org/mqtt-plan#Message> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fe8 <http://www.w3.org/2002/07/owl#qualifiedCardinality> "0"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fe8 <http://www.w3.org/2002/07/owl#onProperty> <http://w3id.org/mqtt-plan#packetAtt> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fe8 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+<http://w3id.org/mqtt-plan#Subscribe> <http://www.w3.org/2000/01/rdf-schema#label> "Subscribe"@en .
+<http://w3id.org/mqtt-plan#Subscribe> <http://www.w3.org/2000/01/rdf-schema#comment> "A step describing a planned activity of subscribing a client from specific topics. The client is described  as the mqtt-prov:Sender of the mqtt-prov:ControlPacket which triggers this action. The topics for which the client is subscribed are described by the mqtt-plan:TopicFilter attribute associated with the mqtt-plan:ControlPacket triggering this action. This step represents an activity performed by the broker on internally maintained list of topic subscribtions, it does not imply any response is sent to the client. The acknowledgment of subscribing can be modeled with  mqtt-plan:SubscribeAcknowledgment broker action triggered by the mqtt-plan:ActionResult of this step."@en .
+<http://w3id.org/mqtt-plan#Subscribe> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/mqtt-plan#BrokerAction> .
+<http://w3id.org/mqtt-plan#Subscribe> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fe2 <http://www.w3.org/2002/07/owl#onClass> <http://w3id.org/mqtt-plan#Sender> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fe2 <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fe2 <http://www.w3.org/2002/07/owl#onProperty> <http://w3id.org/mqtt-plan#packetAtt> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fe2 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fdb <http://www.w3.org/2002/07/owl#onClass> <http://w3id.org/mqtt-plan#Message> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fdb <http://www.w3.org/2002/07/owl#qualifiedCardinality> "0"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fdb <http://www.w3.org/2002/07/owl#onProperty> <http://w3id.org/mqtt-plan#packetAtt> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fdb <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7ff5 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7ff4 .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7ff5 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://w3id.org/mqtt-plan#ActionResult> .
+<http://w3id.org/mqtt-plan#ConnectCP> <http://www.w3.org/2000/01/rdf-schema#label> "Connect CP"@en .
+<http://w3id.org/mqtt-plan#ConnectCP> <http://www.w3.org/2000/01/rdf-schema#comment> "A description of a control packet which indicates that a client wants to establish a connection with a message broker."@en .
+<http://w3id.org/mqtt-plan#ConnectCP> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fe4 .
+<http://w3id.org/mqtt-plan#ConnectCP> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fe5 .
+<http://w3id.org/mqtt-plan#ConnectCP> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fe6 .
+<http://w3id.org/mqtt-plan#ConnectCP> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fe7 .
+<http://w3id.org/mqtt-plan#ConnectCP> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fe8 .
+<http://w3id.org/mqtt-plan#ConnectCP> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/mqtt-plan#ControlPacket> .
+<http://w3id.org/mqtt-plan#ConnectCP> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fee <http://www.w3.org/2002/07/owl#onClass> <http://w3id.org/mqtt-plan#Unsubscribe> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fee <http://www.w3.org/2002/07/owl#qualifiedCardinality> "0"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fee <http://www.w3.org/2002/07/owl#onProperty> <http://w3id.org/mqtt-plan#triggers> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fee <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 <http://w3id.org/mqtt-plan#SubscribeAcknowledgment> <http://www.w3.org/2000/01/rdf-schema#label> "Subscribe Acknowledgment"@en .
 <http://w3id.org/mqtt-plan#SubscribeAcknowledgment> <http://www.w3.org/2000/01/rdf-schema#comment> "A step describing a planned activity of sending an acknowledgment of a successfull subscription from specific topics to a  client. The client is described  as the mqtt-prov:Sender attribute and topics are described by the mqtt-plan:TopicFilter  attribute associated with the mqtt-prov:ControlPacket which triggers this action or an action which generated mqtt-plan:ActionResult that triggers this action."@en .
 <http://w3id.org/mqtt-plan#SubscribeAcknowledgment> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/mqtt-plan#Acknowledgment> .
 <http://w3id.org/mqtt-plan#SubscribeAcknowledgment> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<http://w3id.org/mqtt-plan#triggers> <http://www.w3.org/2000/01/rdf-schema#label> "triggers"@en .
-<http://w3id.org/mqtt-plan#triggers> <http://www.w3.org/2000/01/rdf-schema#range> <http://w3id.org/mqtt-plan#BrokerAction> .
-<http://w3id.org/mqtt-plan#triggers> <http://www.w3.org/2000/01/rdf-schema#domain> _:AX2dX39ab5babX3aX1628c3bddeeX3aXX2dX7ffc .
-<http://w3id.org/mqtt-plan#triggers> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
-_:AX2dX39ab5babX3aX1628c3bddeeX3aXX2dX7ffc <http://www.w3.org/2002/07/owl#unionOf> _:AX2dX39ab5babX3aX1628c3bddeeX3aXX2dX7ffb .
-_:AX2dX39ab5babX3aX1628c3bddeeX3aXX2dX7ffc <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://w3id.org/mqtt-plan#ConnectAcknowledgment> <http://www.w3.org/2000/01/rdf-schema#label> "Connect Acknowledgment"@en .
+<http://w3id.org/mqtt-plan#ConnectAcknowledgment> <http://www.w3.org/2000/01/rdf-schema#comment> "A step describing a planned activity of sending an acknowledgment of a successfull connection request to a  client. The client is described  as the mqtt-prov:Sender of the mqtt-prov:ControlPacket which triggers this action or an action which generated mqtt-plan:ActionResult that triggers this action."@en .
+<http://w3id.org/mqtt-plan#ConnectAcknowledgment> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/mqtt-plan#Acknowledgment> .
+<http://w3id.org/mqtt-plan#ConnectAcknowledgment> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fd4 <http://www.w3.org/2002/07/owl#onClass> <http://w3id.org/mqtt-plan#PacketID> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fd4 <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fd4 <http://www.w3.org/2002/07/owl#onProperty> <http://w3id.org/mqtt-plan#packetAtt> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fd4 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7ffb <http://www.w3.org/2002/07/owl#inverseOf> <http://w3id.org/mqtt-plan#triggers> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fcd <http://www.w3.org/2002/07/owl#onClass> <http://w3id.org/mqtt-plan#KeepAlive> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fcd <http://www.w3.org/2002/07/owl#qualifiedCardinality> "0"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fcd <http://www.w3.org/2002/07/owl#onProperty> <http://w3id.org/mqtt-plan#packetAtt> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fcd <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fe7 <http://www.w3.org/2002/07/owl#onClass> <http://w3id.org/mqtt-plan#PacketID> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fe7 <http://www.w3.org/2002/07/owl#qualifiedCardinality> "0"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fe7 <http://www.w3.org/2002/07/owl#onProperty> <http://w3id.org/mqtt-plan#packetAtt> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fe7 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+<http://w3id.org/mqtt-plan#TopicFilter> <http://www.w3.org/2000/01/rdf-schema#label> "Topic Filter"@en .
+<http://w3id.org/mqtt-plan#TopicFilter> <http://www.w3.org/2000/01/rdf-schema#comment> "A variable describing the topic filter that is used by a client to subscribe to one or a set of topic."@en .
+<http://w3id.org/mqtt-plan#TopicFilter> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/mqtt-plan#PacketAttribute> .
+<http://w3id.org/mqtt-plan#TopicFilter> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://w3id.org/mqtt-plan#Acknowledgment> <http://www.w3.org/2000/01/rdf-schema#label> "Acknowledgment"@en .
+<http://w3id.org/mqtt-plan#Acknowledgment> <http://www.w3.org/2000/01/rdf-schema#comment> "A step describing a planned activity of sending an acknowledgment request to a  client. The client is described  as the mqtt-prov:Sender of the mqtt-prov:ControlPacket which triggers this action or an action whihc generated mqtt-plan:ActionResult that triggered this action."@en .
+<http://w3id.org/mqtt-plan#Acknowledgment> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/mqtt-plan#BrokerAction> .
+<http://w3id.org/mqtt-plan#Acknowledgment> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fe1 <http://www.w3.org/2002/07/owl#onClass> <http://w3id.org/mqtt-plan#KeepAlive> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fe1 <http://www.w3.org/2002/07/owl#qualifiedCardinality> "0"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fe1 <http://www.w3.org/2002/07/owl#onProperty> <http://w3id.org/mqtt-plan#packetAtt> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fe1 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fda <http://www.w3.org/2002/07/owl#onClass> <http://w3id.org/mqtt-plan#PacketID> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fda <http://www.w3.org/2002/07/owl#qualifiedCardinality> "0"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fda <http://www.w3.org/2002/07/owl#onProperty> <http://w3id.org/mqtt-plan#packetAtt> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fda <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7ff4 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7ff4 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://w3id.org/mqtt-plan#ControlPacket> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fed <http://www.w3.org/2002/07/owl#onClass> <http://w3id.org/mqtt-plan#Reason> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fed <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fed <http://www.w3.org/2002/07/owl#onProperty> <http://w3id.org/mqtt-plan#resultAtt> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fed <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fd9 <http://www.w3.org/2002/07/owl#onClass> <http://w3id.org/mqtt-plan#TopicFilter> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fd9 <http://www.w3.org/2002/07/owl#qualifiedCardinality> "0"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fd9 <http://www.w3.org/2002/07/owl#onProperty> <http://w3id.org/mqtt-plan#packetAtt> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fd9 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 <http://w3id.org/mqtt-plan#KeepAlive> <http://www.w3.org/2000/01/rdf-schema#label> "Keep Alive"@en .
 <http://w3id.org/mqtt-plan#KeepAlive> <http://www.w3.org/2000/01/rdf-schema#comment> "A variable describing a maximum time interval (meassured in seconds) between two control packets sent by a client to prevent diconnection from the broker. \n\nNote: as per MQTT standard, value 0 means that this  feature should be deactivetated, however, broker still may close the connection if it determines the client is inactive or non-responsive regrdless of Keep Alive value provided."@en .
 <http://w3id.org/mqtt-plan#KeepAlive> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/mqtt-plan#PacketAttribute> .
 <http://w3id.org/mqtt-plan#KeepAlive> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<http://w3id.org/mqtt-plan#Connect> <http://www.w3.org/2000/01/rdf-schema#label> "Connect"@en .
-<http://w3id.org/mqtt-plan#Connect> <http://www.w3.org/2000/01/rdf-schema#comment> "A step describing a planned activity of connecting a client. The client is described  as the mqtt-prov:Sender of the mqtt-prov:ControlPacket which triggers this action."@en .
-<http://w3id.org/mqtt-plan#Connect> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/mqtt-plan#BrokerAction> .
-<http://w3id.org/mqtt-plan#Connect> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://w3id.org/mqtt-plan#TopicName> <http://www.w3.org/2000/01/rdf-schema#label> "Topic Name"@en .
+<http://w3id.org/mqtt-plan#TopicName> <http://www.w3.org/2000/01/rdf-schema#comment> "A variable describing a topic name."@en .
+<http://w3id.org/mqtt-plan#TopicName> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/mqtt-plan#PacketAttribute> .
+<http://w3id.org/mqtt-plan#TopicName> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://w3id.org/mqtt-plan#PacketAttribute> <http://www.w3.org/2000/01/rdf-schema#label> "Packet Attribute"@en .
+<http://w3id.org/mqtt-plan#PacketAttribute> <http://www.w3.org/2000/01/rdf-schema#comment> "A variable representing a particular aspect of the mqtt-plan:ControlPacket."@en .
+<http://w3id.org/mqtt-plan#PacketAttribute> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://purl.org/net/p-plan#Variable> .
+<http://w3id.org/mqtt-plan#PacketAttribute> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fd3 <http://www.w3.org/2002/07/owl#onClass> <http://w3id.org/mqtt-plan#TopicName> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fd3 <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fd3 <http://www.w3.org/2002/07/owl#onProperty> <http://w3id.org/mqtt-plan#packetAtt> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fd3 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7ffa <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7ffa <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://w3id.org/mqtt-plan#packetAtt> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fcc <http://www.w3.org/2002/07/owl#onClass> <http://w3id.org/mqtt-plan#Message> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fcc <http://www.w3.org/2002/07/owl#qualifiedCardinality> "0"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fcc <http://www.w3.org/2002/07/owl#onProperty> <http://w3id.org/mqtt-plan#packetAtt> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fcc <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+<http://w3id.org/mqtt-plan#PublishCP> <http://www.w3.org/2000/01/rdf-schema#label> "Publish CP"@en .
+<http://w3id.org/mqtt-plan#PublishCP> <http://www.w3.org/2000/01/rdf-schema#comment> "A description of a control packet which indicates that a client wants to publish a message under a specific topic."@en .
+<http://w3id.org/mqtt-plan#PublishCP> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fd3 .
+<http://w3id.org/mqtt-plan#PublishCP> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fd4 .
+<http://w3id.org/mqtt-plan#PublishCP> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fd5 .
+<http://w3id.org/mqtt-plan#PublishCP> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fd6 .
+<http://w3id.org/mqtt-plan#PublishCP> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fd7 .
+<http://w3id.org/mqtt-plan#PublishCP> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/mqtt-plan#ControlPacket> .
+<http://w3id.org/mqtt-plan#PublishCP> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fe6 <http://www.w3.org/2002/07/owl#onClass> <http://w3id.org/mqtt-plan#TopicFilter> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fe6 <http://www.w3.org/2002/07/owl#qualifiedCardinality> "0"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fe6 <http://www.w3.org/2002/07/owl#onProperty> <http://w3id.org/mqtt-plan#packetAtt> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fe6 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fdf <http://www.w3.org/2002/07/owl#onClass> <http://w3id.org/mqtt-plan#PacketID> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fdf <http://www.w3.org/2002/07/owl#qualifiedCardinality> "0"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fdf <http://www.w3.org/2002/07/owl#onProperty> <http://w3id.org/mqtt-plan#packetAtt> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fdf <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7ff9 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7ff7 .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7ff9 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7ff8 .
+<http://w3id.org/mqtt-plan#ControlPacket> <http://www.w3.org/2000/01/rdf-schema#label> "Control Packet"@en .
+<http://w3id.org/mqtt-plan#ControlPacket> <http://www.w3.org/2000/01/rdf-schema#comment> "A variabale describing an MQTT control packet that has been interpreted and contextualised by the message broker (e.g. an explicit associations between the sender and the control packet are recorded even if such information is not present in the raw MQTT control packet structure)."@en .
+<http://w3id.org/mqtt-plan#ControlPacket> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fe2 .
+<http://w3id.org/mqtt-plan#ControlPacket> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fe3 .
+<http://w3id.org/mqtt-plan#ControlPacket> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://purl.org/net/p-plan#Variable> .
+<http://w3id.org/mqtt-plan#ControlPacket> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fe0 <http://www.w3.org/2002/07/owl#onClass> <http://w3id.org/mqtt-plan#Message> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fe0 <http://www.w3.org/2002/07/owl#qualifiedCardinality> "0"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fe0 <http://www.w3.org/2002/07/owl#onProperty> <http://w3id.org/mqtt-plan#packetAtt> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fe0 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+<http://w3id.org/mqtt-plan#hasActionResult> <http://www.w3.org/2000/01/rdf-schema#label> "hasActionResult"@en .
+<http://w3id.org/mqtt-plan#hasActionResult> <http://www.w3.org/2000/01/rdf-schema#comment> "mqtt-plan:hasActionResult links mqtt-plan:BrokerAction to mqtt-plan:ActionResult."@en .
+<http://w3id.org/mqtt-plan#hasActionResult> <http://www.w3.org/2000/01/rdf-schema#range> <http://w3id.org/mqtt-plan#ActionResult> .
+<http://w3id.org/mqtt-plan#hasActionResult> <http://www.w3.org/2000/01/rdf-schema#domain> <http://w3id.org/mqtt-plan#BrokerAction> .
+<http://w3id.org/mqtt-plan#hasActionResult> <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> <http://purl.org/net/p-plan#hasOutputVar> .
+<http://w3id.org/mqtt-plan#hasActionResult> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7ff3 <http://www.w3.org/2002/07/owl#onClass> <http://w3id.org/mqtt-plan#CompletionState> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7ff3 <http://www.w3.org/2002/07/owl#minQualifiedCardinality> "1"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7ff3 <http://www.w3.org/2002/07/owl#onProperty> <http://w3id.org/mqtt-plan#resultAtt> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7ff3 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 <http://w3id.org/mqtt-plan#resultAtt> <http://www.w3.org/2000/01/rdf-schema#label> "resultAtt"@en .
 <http://w3id.org/mqtt-plan#resultAtt> <http://www.w3.org/2000/01/rdf-schema#comment> "mqtt-plan:resultAtt links the mqtt-plan:ActionResult to mqtt-plan:ResultAttribute."@en .
 <http://w3id.org/mqtt-plan#resultAtt> <http://www.w3.org/2000/01/rdf-schema#range> <http://w3id.org/mqtt-plan#ResultAttribute> .
 <http://w3id.org/mqtt-plan#resultAtt> <http://www.w3.org/2000/01/rdf-schema#domain> <http://w3id.org/mqtt-plan#ActionResult> .
 <http://w3id.org/mqtt-plan#resultAtt> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fec <http://www.w3.org/2002/07/owl#onClass> <http://w3id.org/mqtt-plan#Target> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fec <http://www.w3.org/2002/07/owl#maxQualifiedCardinality> "1"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fec <http://www.w3.org/2002/07/owl#onProperty> <http://w3id.org/mqtt-plan#resultAtt> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fec <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+<http://w3id.org/mqtt-plan#Reason> <http://www.w3.org/2000/01/rdf-schema#label> "Reason"@en .
+<http://w3id.org/mqtt-plan#Reason> <http://www.w3.org/2000/01/rdf-schema#comment> "A variable describing an mqtt-plan:ActionResult atribute denoting a reason for an mqtt-plan:BrokerAction that generated this action result.\n\nFor example, p-plan:Entities corresponding to this variable might describe a client's attempt to requerst a broker action for which it is not authorised (e.g. subscribing to a private topic)."@en .
+<http://w3id.org/mqtt-plan#Reason> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/mqtt-plan#ResultAttribute> .
+<http://w3id.org/mqtt-plan#Reason> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fd8 <http://www.w3.org/2002/07/owl#onClass> <http://w3id.org/mqtt-plan#TopicName> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fd8 <http://www.w3.org/2002/07/owl#qualifiedCardinality> "0"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fd8 <http://www.w3.org/2002/07/owl#onProperty> <http://w3id.org/mqtt-plan#packetAtt> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fd8 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 <http://w3id.org/mqtt-plan#BrokerAction> <http://www.w3.org/2000/01/rdf-schema#label> "Broker Action"@en .
 <http://w3id.org/mqtt-plan#BrokerAction> <http://www.w3.org/2000/01/rdf-schema#comment> "An abstract concept representing a planned activity that broker performs in response to receiving an mqtt-plan:ControlPacket or as a result of some mqtt-plan:ActionResult produced by another mqtt-plan:BrokerAction."@en .
+<http://w3id.org/mqtt-plan#BrokerAction> <http://www.w3.org/2000/01/rdf-schema#subClassOf> _:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fe9 .
 <http://w3id.org/mqtt-plan#BrokerAction> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://purl.org/net/p-plan#Step> .
 <http://w3id.org/mqtt-plan#BrokerAction> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<http://w3id.org/mqtt-plan#ConnectAcknowledgment> <http://www.w3.org/2000/01/rdf-schema#label> "Connect Acknowledgment"@en .
-<http://w3id.org/mqtt-plan#ConnectAcknowledgment> <http://www.w3.org/2000/01/rdf-schema#comment> "A step describing a planned activity of sending an acknowledgment of a successfull connection request to a  client. The client is described  as the mqtt-prov:Sender of the mqtt-prov:ControlPacket which triggers this action or an action which generated mqtt-plan:ActionResult that triggers this action."@en .
-<http://w3id.org/mqtt-plan#ConnectAcknowledgment> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/mqtt-plan#Acknowledgment> .
-<http://w3id.org/mqtt-plan#ConnectAcknowledgment> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<http://w3id.org/mqtt-plan#AffectedAgent> <http://www.w3.org/2000/01/rdf-schema#label> "Affected Agent"@en .
-<http://w3id.org/mqtt-plan#AffectedAgent> <http://www.w3.org/2000/01/rdf-schema#comment> "A variable describing a single agent associated with mqtt-plan:ActionResult. The mqtt-plan:BrokerAction that generated the action result must have been targeted on this agent. \n \nFor example, such agent can refer to the client that was disconnected by the mqtt-plan:Disconnect action."@en .
-<http://w3id.org/mqtt-plan#AffectedAgent> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/mqtt-plan#ResultAttribute> .
-<http://w3id.org/mqtt-plan#AffectedAgent> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<http://w3id.org/mqtt-plan#ActionResult> <http://www.w3.org/2000/01/rdf-schema#label> "Action Result"@en .
-<http://w3id.org/mqtt-plan#ActionResult> <http://www.w3.org/2000/01/rdf-schema#comment> "A variable describing an abstract result object of mqtt-plan:BrokerAction that can be further described by mqtt-plan:ResultAttribute."@en .
-<http://w3id.org/mqtt-plan#ActionResult> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://purl.org/net/p-plan#Variable> .
-<http://w3id.org/mqtt-plan#ActionResult> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://w3id.org/mqtt-plan#ResultAttribute> <http://www.w3.org/2000/01/rdf-schema#label> "Result Attribute"@en .
+<http://w3id.org/mqtt-plan#ResultAttribute> <http://www.w3.org/2000/01/rdf-schema#comment> "A variable representing a particular aspect of the mqtt-plan:ActionResult."@en .
+<http://w3id.org/mqtt-plan#ResultAttribute> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://purl.org/net/p-plan#Variable> .
+<http://w3id.org/mqtt-plan#ResultAttribute> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fd2 <http://www.w3.org/2002/07/owl#onClass> <http://w3id.org/mqtt-plan#KeepAlive> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fd2 <http://www.w3.org/2002/07/owl#qualifiedCardinality> "0"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fd2 <http://www.w3.org/2002/07/owl#onProperty> <http://w3id.org/mqtt-plan#packetAtt> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fd2 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fcb <http://www.w3.org/2002/07/owl#onClass> <http://w3id.org/mqtt-plan#TopicName> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fcb <http://www.w3.org/2002/07/owl#qualifiedCardinality> "0"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fcb <http://www.w3.org/2002/07/owl#onProperty> <http://w3id.org/mqtt-plan#packetAtt> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fcb <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+<http://w3id.org/mqtt-plan#Publish> <http://www.w3.org/2000/01/rdf-schema#label> "Publish"@en .
+<http://w3id.org/mqtt-plan#Publish> <http://www.w3.org/2000/01/rdf-schema#comment> "A step describing a planned activity of forwarding a message from one client (sender) to all clients registered to receive messages under the specified topic. The sender is described  as the mqtt-prov:Sender of the mqtt-prov:ControlPacket which triggers this action. The topic is described by the mqtt-plan:TopicName attribute associated with the mqtt-plan:ControlPacket triggering this action. And the message of the topic can be described as mqtt-plan:Message attribute associated with the mqtt-plan:ControlPacket triggering this action.\n\nThis step represents an activity performed by the broker and implies that the message was forwarded to a single or multiple agents captured in the mqtt-plan:ActionResult of this step using mqtt-plan:AffectedAgent or mqtt-plan:AffectedAgents."@en .
+<http://w3id.org/mqtt-plan#Publish> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/mqtt-plan#BrokerAction> .
+<http://w3id.org/mqtt-plan#Publish> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fe5 <http://www.w3.org/2002/07/owl#onClass> <http://w3id.org/mqtt-plan#TopicName> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fe5 <http://www.w3.org/2002/07/owl#qualifiedCardinality> "0"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fe5 <http://www.w3.org/2002/07/owl#onProperty> <http://w3id.org/mqtt-plan#packetAtt> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fe5 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+<http://w3id.org/mqtt-plan#PingResponse> <http://www.w3.org/2000/01/rdf-schema#label> "Ping response"@en .
+<http://w3id.org/mqtt-plan#PingResponse> <http://www.w3.org/2000/01/rdf-schema#comment> "A step describing a planned activity of responding to a PING request from a client. The client is described  as the mqtt-prov:Sender of the mqtt-prov:ControlPacket which triggers this action."@en .
+<http://w3id.org/mqtt-plan#PingResponse> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/mqtt-plan#BrokerAction> .
+<http://w3id.org/mqtt-plan#PingResponse> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fde <http://www.w3.org/2002/07/owl#onClass> <http://w3id.org/mqtt-plan#TopicFilter> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fde <http://www.w3.org/2002/07/owl#qualifiedCardinality> "0"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fde <http://www.w3.org/2002/07/owl#onProperty> <http://w3id.org/mqtt-plan#packetAtt> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7fde <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
+_:AX2dX646b40b2X3aX16296f7fcd5X3aXX2dX7ff8 <http://www.w3.org/2002/07/owl#inverseOf> <http://w3id.org/mqtt-plan#triggers> .

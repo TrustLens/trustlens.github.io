@@ -3,34 +3,42 @@
     xmlns:terms="http://purl.org/dc/terms/"
     xmlns:owl="http://www.w3.org/2002/07/owl#"
     xmlns:prov="http://www.w3.org/ns/prov#"
-    xmlns="http://w3id.org/mqtt-plan#"
+    xmlns:mqtt-plan="http://w3id.org/mqtt-plan#"
     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
     xmlns:vann="http://purl.org/vocab/vann/"
     xmlns:xsd="http://www.w3.org/2001/XMLSchema#" > 
-  <rdf:Description rdf:about="http://w3id.org/mqtt-plan#Disconnect">
-    <rdfs:label xml:lang="en">Disconnect</rdfs:label>
-    <rdfs:comment xml:lang="en">A step describing a planned activity of disconnecting a client. The client is described  as the mqtt-prov:Sender of the mqtt-prov:ControlPacket which triggers this action. The mqtt-plan:ActionResult gennerated by this activity can include an mqtt-plan:Reason determining the cause of this action, for example, a failed authorisation.</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="http://w3id.org/mqtt-plan#BrokerAction"/>
+  <rdf:Description rdf:about="http://w3id.org/mqtt-plan#UnsubscribeCP">
+    <rdfs:label xml:lang="en">Unsubscribe CP</rdfs:label>
+    <rdfs:comment xml:lang="en">A description of a control packet which indicates that a client wants to unsubscribe from all topics matching the specified topic filter.</rdfs:comment>
+    <rdfs:subClassOf rdf:nodeID="A0"/>
+    <rdfs:subClassOf rdf:nodeID="A1"/>
+    <rdfs:subClassOf rdf:nodeID="A2"/>
+    <rdfs:subClassOf rdf:nodeID="A3"/>
+    <rdfs:subClassOf rdf:nodeID="A4"/>
+    <rdfs:subClassOf rdf:resource="http://w3id.org/mqtt-plan#ControlPacket"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/mqtt-plan#packetAtt">
-    <rdfs:label xml:lang="en">packetAtt</rdfs:label>
-    <rdfs:comment xml:lang="en">mqtt-plan:packetAtt links the mqtt-plan:ControlPacket to mqtt-plan:PacketAttribute.</rdfs:comment>
-    <rdfs:range rdf:resource="http://w3id.org/mqtt-plan#PacketAttribute"/>
-    <rdfs:domain rdf:resource="http://w3id.org/mqtt-plan#ControlPacket"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  <rdf:Description rdf:nodeID="A5">
+    <owl:onClass rdf:resource="http://w3id.org/mqtt-plan#PacketID"/>
+    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:qualifiedCardinality>
+    <owl:onProperty rdf:resource="http://w3id.org/mqtt-plan#packetAtt"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/mqtt-plan#Sender">
-    <rdfs:label xml:lang="en">Sender</rdfs:label>
-    <rdfs:comment xml:lang="en">A variable describing an agent responsible for sending an mqtt-plan:ControlPacket.</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="http://w3id.org/mqtt-plan#PacketAttribute"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  <rdf:Description rdf:nodeID="A6">
+    <owl:onClass rdf:resource="http://w3id.org/mqtt-plan#Message"/>
+    <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+    <owl:onProperty rdf:resource="http://w3id.org/mqtt-plan#packetAtt"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/mqtt-plan#Unsubscribe">
-    <rdfs:label xml:lang="en">Unsubscribe</rdfs:label>
-    <rdfs:comment xml:lang="en">A step describing a planned activity of unsubscribing a client from specific topics. The client is described  as the mqtt-prov:Sender of the mqtt-prov:ControlPacket which triggers this action. The topics from which the client is unsubscribed are described by the mqtt-plan:TopicFilter attribute associated with the mqtt-plan:ControlPacket triggering this action. This step represents an activity performed by the broker on internally maintained list of topic subscribtions, it does not imply any response is sent to the client. The acknowledgment of unsubscribing can be modeled with  mqtt-plan:UnsubscribeAcknowledgment broker action triggered by the mqtt-plan:ActionResult of this step.</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="http://w3id.org/mqtt-plan#BrokerAction"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  <rdf:Description rdf:nodeID="A7">
+    <rdf:rest rdf:nodeID="A8"/>
+    <rdf:first rdf:nodeID="A9"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A10">
+    <owl:onClass rdf:resource="http://w3id.org/mqtt-plan#BrokerAction"/>
+    <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+    <owl:onProperty rdf:resource="http://w3id.org/mqtt-plan#triggers"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://w3id.org/mqtt-plan#PacketAttribute">
     <rdfs:label xml:lang="en">Packet Attribute</rdfs:label>
@@ -38,17 +46,11 @@
     <rdfs:subClassOf rdf:resource="http://purl.org/net/p-plan#Variable"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/mqtt-plan#ControlPacket">
-    <rdfs:label xml:lang="en">Control Packet</rdfs:label>
-    <rdfs:comment xml:lang="en">A variabale describing an MQTT control packet that has been interpreted and contextualised by the message broker (e.g. an explicit associations between the sender and the control packet are recorded even if such information is not present in the raw MQTT control packet structure).</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="http://purl.org/net/p-plan#Variable"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/mqtt-plan#BrokerAction">
-    <rdfs:label xml:lang="en">Broker Action</rdfs:label>
-    <rdfs:comment xml:lang="en">An abstract concept representing a planned activity that broker performs in response to receiving an mqtt-plan:ControlPacket or as a result of some mqtt-plan:ActionResult produced by another mqtt-plan:BrokerAction.</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="http://purl.org/net/p-plan#Step"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  <rdf:Description rdf:nodeID="A11">
+    <owl:onClass rdf:resource="http://w3id.org/mqtt-plan#Message"/>
+    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:qualifiedCardinality>
+    <owl:onProperty rdf:resource="http://w3id.org/mqtt-plan#packetAtt"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://w3id.org/mqtt-plan#UnsubscribeAcknowledgment">
     <rdfs:label xml:lang="en">Unsubscribe Acknowledgment</rdfs:label>
@@ -56,13 +58,9 @@
     <rdfs:subClassOf rdf:resource="http://w3id.org/mqtt-plan#Acknowledgment"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/mqtt-plan#Publish">
-    <rdfs:label xml:lang="en">Publish</rdfs:label>
-    <rdfs:comment xml:lang="en">A step describing a planned activity of forwarding a message from one client (sender) to all clients registered to receive messages under the specified topic. The sender is described  as the mqtt-prov:Sender of the mqtt-prov:ControlPacket which triggers this action. The topic is described by the mqtt-plan:TopicName attribute associated with the mqtt-plan:ControlPacket triggering this action. And the message of the topic can be described as mqtt-plan:Message attribute associated with the mqtt-plan:ControlPacket triggering this action.
-
-This step represents an activity performed by the broker and implies that the message was forwarded to a single or multiple agents captured in the mqtt-plan:ActionResult of this step using mqtt-plan:AffectedAgent or mqtt-plan:AffectedAgents.</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="http://w3id.org/mqtt-plan#BrokerAction"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  <rdf:Description rdf:nodeID="A12">
+    <rdf:rest rdf:nodeID="A13"/>
+    <rdf:first rdf:resource="http://w3id.org/mqtt-plan#ActionResult"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://w3id.org/mqtt-plan#KeepAlive">
     <rdfs:label xml:lang="en">Keep Alive</rdfs:label>
@@ -72,17 +70,331 @@ Note: as per MQTT standard, value 0 means that this  feature should be deactivet
     <rdfs:subClassOf rdf:resource="http://w3id.org/mqtt-plan#PacketAttribute"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/mqtt-plan#TopicName">
-    <rdfs:label xml:lang="en">Topic Name</rdfs:label>
-    <rdfs:comment xml:lang="en">A variable describing a topic name.</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="http://w3id.org/mqtt-plan#PacketAttribute"/>
+  <rdf:Description rdf:nodeID="A14">
+    <owl:inverseOf rdf:resource="http://w3id.org/mqtt-plan#triggers"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/mqtt-plan#PublishCP">
+    <rdfs:label xml:lang="en">Publish CP</rdfs:label>
+    <rdfs:comment xml:lang="en">A description of a control packet which indicates that a client wants to publish a message under a specific topic.</rdfs:comment>
+    <rdfs:subClassOf rdf:nodeID="A15"/>
+    <rdfs:subClassOf rdf:nodeID="A16"/>
+    <rdfs:subClassOf rdf:nodeID="A6"/>
+    <rdfs:subClassOf rdf:nodeID="A17"/>
+    <rdfs:subClassOf rdf:nodeID="A18"/>
+    <rdfs:subClassOf rdf:resource="http://w3id.org/mqtt-plan#ControlPacket"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A19">
+    <owl:onClass rdf:resource="http://w3id.org/mqtt-plan#TopicFilter"/>
+    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:qualifiedCardinality>
+    <owl:onProperty rdf:resource="http://w3id.org/mqtt-plan#packetAtt"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://w3id.org/mqtt-plan#Connect">
     <rdfs:label xml:lang="en">Connect</rdfs:label>
     <rdfs:comment xml:lang="en">A step describing a planned activity of connecting a client. The client is described  as the mqtt-prov:Sender of the mqtt-prov:ControlPacket which triggers this action.</rdfs:comment>
     <rdfs:subClassOf rdf:resource="http://w3id.org/mqtt-plan#BrokerAction"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A20">
+    <owl:onClass rdf:resource="http://w3id.org/mqtt-plan#PacketID"/>
+    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:qualifiedCardinality>
+    <owl:onProperty rdf:resource="http://w3id.org/mqtt-plan#packetAtt"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A4">
+    <owl:onClass rdf:resource="http://w3id.org/mqtt-plan#KeepAlive"/>
+    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:qualifiedCardinality>
+    <owl:onProperty rdf:resource="http://w3id.org/mqtt-plan#packetAtt"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/mqtt-plan#ResultAttribute">
+    <rdfs:label xml:lang="en">Result Attribute</rdfs:label>
+    <rdfs:comment xml:lang="en">A variable representing a particular aspect of the mqtt-plan:ActionResult.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://purl.org/net/p-plan#Variable"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A21">
+    <owl:onClass rdf:resource="http://w3id.org/mqtt-plan#Message"/>
+    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:qualifiedCardinality>
+    <owl:onProperty rdf:resource="http://w3id.org/mqtt-plan#packetAtt"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A22">
+    <owl:onClass rdf:resource="http://w3id.org/mqtt-plan#Reason"/>
+    <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+    <owl:onProperty rdf:resource="http://w3id.org/mqtt-plan#resultAtt"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A23">
+    <owl:onClass rdf:resource="http://w3id.org/mqtt-plan#Publish"/>
+    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:qualifiedCardinality>
+    <owl:onProperty rdf:resource="http://w3id.org/mqtt-plan#triggers"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/mqtt-plan#ConnectAcknowledgment">
+    <rdfs:label xml:lang="en">Connect Acknowledgment</rdfs:label>
+    <rdfs:comment xml:lang="en">A step describing a planned activity of sending an acknowledgment of a successfull connection request to a  client. The client is described  as the mqtt-prov:Sender of the mqtt-prov:ControlPacket which triggers this action or an action which generated mqtt-plan:ActionResult that triggers this action.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://w3id.org/mqtt-plan#Acknowledgment"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A24">
+    <owl:onClass rdf:resource="http://w3id.org/mqtt-plan#TopicName"/>
+    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:qualifiedCardinality>
+    <owl:onProperty rdf:resource="http://w3id.org/mqtt-plan#packetAtt"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A9">
+    <owl:inverseOf rdf:resource="http://w3id.org/mqtt-plan#triggers"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A25">
+    <owl:onClass rdf:resource="http://w3id.org/mqtt-plan#TopicFilter"/>
+    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:qualifiedCardinality>
+    <owl:onProperty rdf:resource="http://w3id.org/mqtt-plan#packetAtt"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A26">
+    <owl:onClass rdf:resource="http://w3id.org/mqtt-plan#TopicName"/>
+    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:qualifiedCardinality>
+    <owl:onProperty rdf:resource="http://w3id.org/mqtt-plan#packetAtt"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A13">
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+    <rdf:first rdf:resource="http://w3id.org/mqtt-plan#ControlPacket"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A27">
+    <owl:onClass rdf:resource="http://w3id.org/mqtt-plan#Sender"/>
+    <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+    <owl:onProperty rdf:resource="http://w3id.org/mqtt-plan#packetAtt"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/mqtt-plan#CompletionState">
+    <rdfs:subClassOf rdf:resource="http://w3id.org/mqtt-plan#ResultAttribute"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A16">
+    <owl:onClass rdf:resource="http://w3id.org/mqtt-plan#PacketID"/>
+    <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+    <owl:onProperty rdf:resource="http://w3id.org/mqtt-plan#packetAtt"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/mqtt-plan">
+    <terms:creator xml:lang="en">Milan Markovic</terms:creator>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
+    <owl:imports rdf:resource="http://purl.org/net/p-plan#"/>
+    <terms:license xml:lang="en">https://creativecommons.org/licenses/by-nc-sa/2.0/</terms:license>
+    <terms:creator xml:lang="en">Peter Edwards</terms:creator>
+    <terms:creator xml:lang="en">David Corsar</terms:creator>
+    <owl:imports rdf:resource="http://www.w3.org/ns/prov-o-20130430"/>
+    <rdfs:comment xml:lang="en">The MQTT-PLAN ontology defines a set of concepts for describing plans of MQTT enabled message brokers. The vocabulary for plan descriptions forms an extension to the high level concepts defined in P-PLAN. Execution trace of such plans is then modelled using PROV-O.
+
+In order to keep the vocabulary lightweight, this version of the ontology does not cover some of the functionalities specified in MQTT 3.1.1. These include: publish attributes defining the required quality of service and associated acknowledgments, will messages,  retaining of messages by the server, session flags. Username and password flags are also not captured explicitly for security reasons.
+
+Should these features be required, they may be incorporated in future revisons of the ontology. Please contact the authors with your suggestions.</rdfs:comment>
+    <terms:creator xml:lang="en">Waqar Asif</terms:creator>
+    <owl:versionInfo xml:lang="en">Version 1.0</owl:versionInfo>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/mqtt-plan#Acknowledgment">
+    <rdfs:label xml:lang="en">Acknowledgment</rdfs:label>
+    <rdfs:comment xml:lang="en">A step describing a planned activity of sending an acknowledgment request to a  client. The client is described  as the mqtt-prov:Sender of the mqtt-prov:ControlPacket which triggers this action or an action whihc generated mqtt-plan:ActionResult that triggered this action.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://w3id.org/mqtt-plan#BrokerAction"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A28">
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+    <rdf:first rdf:resource="http://w3id.org/mqtt-plan#packetAtt"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/mqtt-plan#resultAtt">
+    <rdfs:label xml:lang="en">resultAtt</rdfs:label>
+    <rdfs:comment xml:lang="en">mqtt-plan:resultAtt links the mqtt-plan:ActionResult to mqtt-plan:ResultAttribute.</rdfs:comment>
+    <rdfs:range rdf:resource="http://w3id.org/mqtt-plan#ResultAttribute"/>
+    <rdfs:domain rdf:resource="http://w3id.org/mqtt-plan#ActionResult"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/mqtt-plan#hasActionInput">
+    <rdfs:label xml:lang="en">hasActionInput</rdfs:label>
+    <rdfs:comment xml:lang="en">mqtt-plan:hasActionInput links attributes of mqtt-plan:Control packet to mqtt-plan:BrokerAction.</rdfs:comment>
+    <owl:propertyChainAxiom rdf:nodeID="A7"/>
+    <owl:propertyChainAxiom rdf:nodeID="A29"/>
+    <rdfs:range rdf:resource="http://w3id.org/mqtt-plan#PacketAttribute"/>
+    <rdfs:domain rdf:resource="http://w3id.org/mqtt-plan#BrokerAction"/>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/net/p-plan#hasInputVar"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/mqtt-plan#Reason">
+    <rdfs:label xml:lang="en">Reason</rdfs:label>
+    <rdfs:comment xml:lang="en">A variable describing an mqtt-plan:ActionResult atribute denoting a reason for an mqtt-plan:BrokerAction that generated this action result.
+
+For example, p-plan:Entities corresponding to this variable might describe a client's attempt to requerst a broker action for which it is not authorised (e.g. subscribing to a private topic).</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://w3id.org/mqtt-plan#ResultAttribute"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/mqtt-plan#SubscribeCP">
+    <rdfs:label xml:lang="en">Subscribe CP</rdfs:label>
+    <rdfs:comment xml:lang="en">A description of a control packet which indicates that a client wants to subscribe to all topics matching the specified topic filter.</rdfs:comment>
+    <rdfs:subClassOf rdf:nodeID="A30"/>
+    <rdfs:subClassOf rdf:nodeID="A31"/>
+    <rdfs:subClassOf rdf:nodeID="A24"/>
+    <rdfs:subClassOf rdf:nodeID="A11"/>
+    <rdfs:subClassOf rdf:nodeID="A32"/>
+    <rdfs:subClassOf rdf:resource="http://w3id.org/mqtt-plan#ControlPacket"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A33">
+    <owl:onClass rdf:resource="http://w3id.org/mqtt-plan#TopicFilter"/>
+    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:qualifiedCardinality>
+    <owl:onProperty rdf:resource="http://w3id.org/mqtt-plan#packetAtt"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A34">
+    <owl:onClass rdf:resource="http://w3id.org/mqtt-plan#Target"/>
+    <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+    <owl:onProperty rdf:resource="http://w3id.org/mqtt-plan#resultAtt"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/mqtt-plan#AffectedAgent">
+    <rdfs:label xml:lang="en">Affected Agent</rdfs:label>
+    <rdfs:comment xml:lang="en">A variable describing a single agent associated with mqtt-plan:ActionResult. The mqtt-plan:BrokerAction that generated the action result must have been targeted on this agent. 
+ 
+For example, such agent can refer to the client that was disconnected by the mqtt-plan:Disconnect action.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://w3id.org/mqtt-plan#Target"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A35">
+    <owl:onClass rdf:resource="http://w3id.org/mqtt-plan#PacketID"/>
+    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:qualifiedCardinality>
+    <owl:onProperty rdf:resource="http://w3id.org/mqtt-plan#packetAtt"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A3">
+    <owl:onClass rdf:resource="http://w3id.org/mqtt-plan#Message"/>
+    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:qualifiedCardinality>
+    <owl:onProperty rdf:resource="http://w3id.org/mqtt-plan#packetAtt"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/mqtt-plan#SubscribeAcknowledgment">
+    <rdfs:label xml:lang="en">Subscribe Acknowledgment</rdfs:label>
+    <rdfs:comment xml:lang="en">A step describing a planned activity of sending an acknowledgment of a successfull subscription from specific topics to a  client. The client is described  as the mqtt-prov:Sender attribute and topics are described by the mqtt-plan:TopicFilter  attribute associated with the mqtt-prov:ControlPacket which triggers this action or an action which generated mqtt-plan:ActionResult that triggers this action.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://w3id.org/mqtt-plan#Acknowledgment"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A36">
+    <owl:onClass rdf:resource="http://w3id.org/mqtt-plan#KeepAlive"/>
+    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:qualifiedCardinality>
+    <owl:onProperty rdf:resource="http://w3id.org/mqtt-plan#packetAtt"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/mqtt-plan#packetAtt">
+    <rdfs:label xml:lang="en">packetAtt</rdfs:label>
+    <rdfs:comment xml:lang="en">mqtt-plan:packetAtt links the mqtt-plan:ControlPacket to mqtt-plan:PacketAttribute.</rdfs:comment>
+    <rdfs:range rdf:resource="http://w3id.org/mqtt-plan#PacketAttribute"/>
+    <rdfs:domain rdf:resource="http://w3id.org/mqtt-plan#ControlPacket"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/mqtt-plan#Disconnect">
+    <rdfs:label xml:lang="en">Disconnect</rdfs:label>
+    <rdfs:comment xml:lang="en">A step describing a planned activity of disconnecting a client. The client is described  as the mqtt-prov:Sender of the mqtt-prov:ControlPacket which triggers this action. The mqtt-plan:ActionResult gennerated by this activity can include an mqtt-plan:Reason determining the cause of this action, for example, a failed authorisation.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://w3id.org/mqtt-plan#BrokerAction"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/mqtt-plan#Sender">
+    <rdfs:label xml:lang="en">Sender</rdfs:label>
+    <rdfs:comment xml:lang="en">A variable describing an agent responsible for sending an mqtt-plan:ControlPacket.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://w3id.org/mqtt-plan#PacketAttribute"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A8">
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+    <rdf:first rdf:resource="http://w3id.org/mqtt-plan#resultAtt"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A37">
+    <owl:onClass rdf:resource="http://w3id.org/mqtt-plan#ActionResult"/>
+    <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+    <owl:onProperty rdf:resource="http://w3id.org/mqtt-plan#hasActionResult"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A18">
+    <owl:onClass rdf:resource="http://w3id.org/mqtt-plan#KeepAlive"/>
+    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:qualifiedCardinality>
+    <owl:onProperty rdf:resource="http://w3id.org/mqtt-plan#packetAtt"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/mqtt-plan#Unsubscribe">
+    <rdfs:label xml:lang="en">Unsubscribe</rdfs:label>
+    <rdfs:comment xml:lang="en">A step describing a planned activity of unsubscribing a client from specific topics. The client is described  as the mqtt-prov:Sender of the mqtt-prov:ControlPacket which triggers this action. The topics from which the client is unsubscribed are described by the mqtt-plan:TopicFilter attribute associated with the mqtt-plan:ControlPacket triggering this action. This step represents an activity performed by the broker on internally maintained list of topic subscribtions, it does not imply any response is sent to the client. The acknowledgment of unsubscribing can be modeled with  mqtt-plan:UnsubscribeAcknowledgment broker action triggered by the mqtt-plan:ActionResult of this step.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://w3id.org/mqtt-plan#BrokerAction"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/mqtt-plan#ControlPacket">
+    <rdfs:label xml:lang="en">Control Packet</rdfs:label>
+    <rdfs:comment xml:lang="en">A variabale describing an MQTT control packet that has been interpreted and contextualised by the message broker (e.g. an explicit associations between the sender and the control packet are recorded even if such information is not present in the raw MQTT control packet structure).</rdfs:comment>
+    <rdfs:subClassOf rdf:nodeID="A27"/>
+    <rdfs:subClassOf rdf:nodeID="A10"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/net/p-plan#Variable"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/mqtt-plan#BrokerAction">
+    <rdfs:label xml:lang="en">Broker Action</rdfs:label>
+    <rdfs:comment xml:lang="en">An abstract concept representing a planned activity that broker performs in response to receiving an mqtt-plan:ControlPacket or as a result of some mqtt-plan:ActionResult produced by another mqtt-plan:BrokerAction.</rdfs:comment>
+    <rdfs:subClassOf rdf:nodeID="A37"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/net/p-plan#Step"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A38">
+    <owl:onClass rdf:resource="http://w3id.org/mqtt-plan#CompletionState"/>
+    <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+    <owl:onProperty rdf:resource="http://w3id.org/mqtt-plan#resultAtt"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A39">
+    <owl:onClass rdf:resource="http://w3id.org/mqtt-plan#TopicName"/>
+    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:qualifiedCardinality>
+    <owl:onProperty rdf:resource="http://w3id.org/mqtt-plan#packetAtt"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A15">
+    <owl:onClass rdf:resource="http://w3id.org/mqtt-plan#TopicName"/>
+    <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+    <owl:onProperty rdf:resource="http://w3id.org/mqtt-plan#packetAtt"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/mqtt-plan#Publish">
+    <rdfs:label xml:lang="en">Publish</rdfs:label>
+    <rdfs:comment xml:lang="en">A step describing a planned activity of forwarding a message from one client (sender) to all clients registered to receive messages under the specified topic. The sender is described  as the mqtt-prov:Sender of the mqtt-prov:ControlPacket which triggers this action. The topic is described by the mqtt-plan:TopicName attribute associated with the mqtt-plan:ControlPacket triggering this action. And the message of the topic can be described as mqtt-plan:Message attribute associated with the mqtt-plan:ControlPacket triggering this action.
+
+This step represents an activity performed by the broker and implies that the message was forwarded to a single or multiple agents captured in the mqtt-plan:ActionResult of this step using mqtt-plan:AffectedAgent or mqtt-plan:AffectedAgents.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://w3id.org/mqtt-plan#BrokerAction"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/mqtt-plan#TopicName">
+    <rdfs:label xml:lang="en">Topic Name</rdfs:label>
+    <rdfs:comment xml:lang="en">A variable describing a topic name.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://w3id.org/mqtt-plan#PacketAttribute"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A0">
+    <owl:onClass rdf:resource="http://w3id.org/mqtt-plan#TopicFilter"/>
+    <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+    <owl:onProperty rdf:resource="http://w3id.org/mqtt-plan#packetAtt"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/mqtt-plan#PingCP">
+    <rdfs:label xml:lang="en">Ping CP</rdfs:label>
+    <rdfs:comment xml:lang="en">A description of a control packet which indicates that a client is still active.</rdfs:comment>
+    <rdfs:subClassOf rdf:nodeID="A26"/>
+    <rdfs:subClassOf rdf:nodeID="A19"/>
+    <rdfs:subClassOf rdf:nodeID="A35"/>
+    <rdfs:subClassOf rdf:nodeID="A21"/>
+    <rdfs:subClassOf rdf:nodeID="A40"/>
+    <rdfs:subClassOf rdf:resource="http://w3id.org/mqtt-plan#ControlPacket"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A41">
+    <owl:onClass rdf:resource="http://w3id.org/mqtt-plan#Subscribe"/>
+    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:qualifiedCardinality>
+    <owl:onProperty rdf:resource="http://w3id.org/mqtt-plan#triggers"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://w3id.org/mqtt-plan#TopicFilter">
     <rdfs:label xml:lang="en">Topic Filter</rdfs:label>
@@ -96,21 +408,35 @@ Note: as per MQTT standard, value 0 means that this  feature should be deactivet
     <rdfs:subClassOf rdf:resource="http://w3id.org/mqtt-plan#PacketAttribute"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/mqtt-plan#ResultAttribute">
-    <rdfs:label xml:lang="en">Result Attribute</rdfs:label>
-    <rdfs:comment xml:lang="en">A variable representing a particular aspect of the mqtt-plan:ActionResult.</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="http://purl.org/net/p-plan#Variable"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  <rdf:Description rdf:nodeID="A31">
+    <owl:onClass rdf:resource="http://w3id.org/mqtt-plan#PacketID"/>
+    <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+    <owl:onProperty rdf:resource="http://w3id.org/mqtt-plan#packetAtt"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A0">
-    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-    <rdf:first rdf:resource="http://w3id.org/mqtt-plan#ControlPacket"/>
+  <rdf:Description rdf:nodeID="A42">
+    <owl:onClass rdf:resource="http://w3id.org/mqtt-plan#Acknowledgment"/>
+    <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+    <owl:onProperty rdf:resource="http://w3id.org/mqtt-plan#triggers"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/mqtt-plan#ConnectAcknowledgment">
-    <rdfs:label xml:lang="en">Connect Acknowledgment</rdfs:label>
-    <rdfs:comment xml:lang="en">A step describing a planned activity of sending an acknowledgment of a successfull connection request to a  client. The client is described  as the mqtt-prov:Sender of the mqtt-prov:ControlPacket which triggers this action or an action which generated mqtt-plan:ActionResult that triggers this action.</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="http://w3id.org/mqtt-plan#Acknowledgment"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  <rdf:Description rdf:nodeID="A43">
+    <owl:onClass rdf:resource="http://w3id.org/mqtt-plan#TopicName"/>
+    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:qualifiedCardinality>
+    <owl:onProperty rdf:resource="http://w3id.org/mqtt-plan#packetAtt"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A2">
+    <owl:onClass rdf:resource="http://w3id.org/mqtt-plan#TopicName"/>
+    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:qualifiedCardinality>
+    <owl:onProperty rdf:resource="http://w3id.org/mqtt-plan#packetAtt"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A44">
+    <owl:onClass rdf:resource="http://w3id.org/mqtt-plan#Connect"/>
+    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:qualifiedCardinality>
+    <owl:onProperty rdf:resource="http://w3id.org/mqtt-plan#triggers"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://w3id.org/mqtt-plan#Subscribe">
     <rdfs:label xml:lang="en">Subscribe</rdfs:label>
@@ -118,51 +444,75 @@ Note: as per MQTT standard, value 0 means that this  feature should be deactivet
     <rdfs:subClassOf rdf:resource="http://w3id.org/mqtt-plan#BrokerAction"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
   </rdf:Description>
+  <rdf:Description rdf:nodeID="A45">
+    <owl:onClass rdf:resource="http://w3id.org/mqtt-plan#Message"/>
+    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:qualifiedCardinality>
+    <owl:onProperty rdf:resource="http://w3id.org/mqtt-plan#packetAtt"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+  </rdf:Description>
   <rdf:Description rdf:about="http://w3id.org/mqtt-plan#AffectedAgents">
     <rdfs:label xml:lang="en">Affected Agents</rdfs:label>
     <rdfs:comment xml:lang="en">A variable describing a collection of agents associated with mqtt-plan:ActionResult. The mqtt-plan:BrokerAction that generated the action result must have been targeted on all agents who are members of this collection. 
  
 For example,  such collection can describe the recipients to whom the broker forwarded a received message as part of mqtt-plan:Publish action.</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="http://w3id.org/mqtt-plan#ResultAttribute"/>
+    <rdfs:subClassOf rdf:resource="http://w3id.org/mqtt-plan#Target"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A1">
-    <owl:unionOf rdf:nodeID="A2"/>
+  <rdf:Description rdf:nodeID="A17">
+    <owl:onClass rdf:resource="http://w3id.org/mqtt-plan#TopicFilter"/>
+    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:qualifiedCardinality>
+    <owl:onProperty rdf:resource="http://w3id.org/mqtt-plan#packetAtt"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A46">
+    <owl:onClass rdf:resource="http://w3id.org/mqtt-plan#Message"/>
+    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:qualifiedCardinality>
+    <owl:onProperty rdf:resource="http://w3id.org/mqtt-plan#packetAtt"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A32">
+    <owl:onClass rdf:resource="http://w3id.org/mqtt-plan#KeepAlive"/>
+    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:qualifiedCardinality>
+    <owl:onProperty rdf:resource="http://w3id.org/mqtt-plan#packetAtt"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A47">
+    <owl:unionOf rdf:nodeID="A12"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/mqtt-plan">
-    <terms:creator xml:lang="en">Milan Markovic</terms:creator>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
-    <owl:imports rdf:resource="http://purl.org/net/p-plan#"/>
-    <rdfs:comment xml:lang="en">The MQTT-PLAN ontology defines a set of concepts for describing plans of MQTT enabled message brokers. The vocabulary for plan descriptions forms an extension to the high level concepts defined in P-PLAN. Execution trace of such plans is then modelled using PROV-O.
-
-In order to keep the vocabulary lightweight, this version of the ontology does not cover some of the functionalities specified in MQTT 3.1.1. These include: message attributes defining the required quality of service and associated acknowledgments, will messages,  retaining of messages by the server, session flags. Username and password flags are also not captured explicitly for security reasons.
-
-Should these features be required, they may be incorporated in future revisons of the ontology. Please contact the authors with your suggestions.</rdfs:comment>
-    <terms:license xml:lang="en">https://creativecommons.org/licenses/by-nc-sa/2.0/</terms:license>
-    <terms:creator xml:lang="en">Peter Edwards</terms:creator>
-    <terms:creator xml:lang="en">David Corsar</terms:creator>
-    <owl:imports rdf:resource="http://www.w3.org/ns/prov-o-20130430"/>
-    <terms:creator xml:lang="en">Waqar Asif</terms:creator>
-    <owl:versionInfo xml:lang="en">Version 1.0</owl:versionInfo>
+  <rdf:Description rdf:nodeID="A48">
+    <owl:onClass rdf:resource="http://w3id.org/mqtt-plan#KeepAlive"/>
+    <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+    <owl:onProperty rdf:resource="http://w3id.org/mqtt-plan#packetAtt"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/mqtt-plan#Acknowledgment">
-    <rdfs:label xml:lang="en">Acknowledgment</rdfs:label>
-    <rdfs:comment xml:lang="en">A step describing a planned activity of sending an acknowledgment request to a  client. The client is described  as the mqtt-prov:Sender of the mqtt-prov:ControlPacket which triggers this action or an action whihc generated mqtt-plan:ActionResult that triggered this action.</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="http://w3id.org/mqtt-plan#BrokerAction"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  <rdf:Description rdf:nodeID="A49">
+    <owl:onClass rdf:resource="http://w3id.org/mqtt-plan#Disconnect"/>
+    <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+    <owl:onProperty rdf:resource="http://w3id.org/mqtt-plan#triggers"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://w3id.org/mqtt-plan#ActionResult">
-    <rdfs:label xml:lang="en">Action Result</rdfs:label>
+    <rdfs:subClassOf rdf:nodeID="A49"/>
+    <rdfs:subClassOf rdf:nodeID="A34"/>
+    <rdfs:subClassOf rdf:nodeID="A23"/>
+    <rdfs:subClassOf rdf:nodeID="A22"/>
+    <rdfs:subClassOf rdf:nodeID="A38"/>
     <rdfs:comment xml:lang="en">A variable describing an abstract result object of mqtt-plan:BrokerAction that can be further described by mqtt-plan:ResultAttribute.</rdfs:comment>
+    <rdfs:subClassOf rdf:nodeID="A50"/>
+    <rdfs:label xml:lang="en">Action Result</rdfs:label>
     <rdfs:subClassOf rdf:resource="http://purl.org/net/p-plan#Variable"/>
+    <rdfs:subClassOf rdf:nodeID="A44"/>
+    <rdfs:subClassOf rdf:nodeID="A42"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:nodeID="A51"/>
+    <rdfs:subClassOf rdf:nodeID="A41"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/mqtt-plan#resultAtt">
-    <rdfs:label xml:lang="en">resultAtt</rdfs:label>
-    <rdfs:comment xml:lang="en">mqtt-plan:resultAtt links the mqtt-plan:ActionResult to mqtt-plan:ResultAttribute.</rdfs:comment>
-    <rdfs:range rdf:resource="http://w3id.org/mqtt-plan#ResultAttribute"/>
-    <rdfs:domain rdf:resource="http://w3id.org/mqtt-plan#ActionResult"/>
+  <rdf:Description rdf:about="http://w3id.org/mqtt-plan#triggers">
+    <rdfs:label xml:lang="en">triggers</rdfs:label>
+    <rdfs:comment xml:lang="en">mqtt-plan:trigers denotes that mqtt-plan:BrokerAction is executed as a result of plan variable describing mqtt-plan:ControlPacket or mqtt-plan:ActionResult.</rdfs:comment>
+    <rdfs:range rdf:resource="http://w3id.org/mqtt-plan#BrokerAction"/>
+    <rdfs:domain rdf:nodeID="A47"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://w3id.org/mqtt-plan#Message">
@@ -171,26 +521,62 @@ Should these features be required, they may be incorporated in future revisons o
     <rdfs:subClassOf rdf:resource="http://w3id.org/mqtt-plan#PacketAttribute"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/mqtt-plan#triggers">
-    <rdfs:label xml:lang="en">triggers</rdfs:label>
-    <rdfs:range rdf:resource="http://w3id.org/mqtt-plan#BrokerAction"/>
-    <rdfs:domain rdf:nodeID="A1"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/mqtt-plan#Reason">
-    <rdfs:label xml:lang="en">Reason</rdfs:label>
-    <rdfs:comment xml:lang="en">A variable describing an mqtt-plan:ActionResult atribute denoting a reason for an mqtt-plan:BrokerAction that generated this action result.
-
-For example, p-plan:Entities corresponding to this variable might describe a client's attempt to requerst a broker action for which it is not authorised (e.g. subscribing to a private topic).</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="http://w3id.org/mqtt-plan#ResultAttribute"/>
+  <rdf:Description rdf:about="http://w3id.org/mqtt-plan#ConnectCP">
+    <rdfs:label xml:lang="en">Connect CP</rdfs:label>
+    <rdfs:comment xml:lang="en">A description of a control packet which indicates that a client wants to establish a connection with a message broker.</rdfs:comment>
+    <rdfs:subClassOf rdf:nodeID="A48"/>
+    <rdfs:subClassOf rdf:nodeID="A39"/>
+    <rdfs:subClassOf rdf:nodeID="A25"/>
+    <rdfs:subClassOf rdf:nodeID="A5"/>
+    <rdfs:subClassOf rdf:nodeID="A46"/>
+    <rdfs:subClassOf rdf:resource="http://w3id.org/mqtt-plan#ControlPacket"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/mqtt-plan#AffectedAgent">
-    <rdfs:label xml:lang="en">Affected Agent</rdfs:label>
-    <rdfs:comment xml:lang="en">A variable describing a single agent associated with mqtt-plan:ActionResult. The mqtt-plan:BrokerAction that generated the action result must have been targeted on this agent. 
- 
-For example, such agent can refer to the client that was disconnected by the mqtt-plan:Disconnect action.</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="http://w3id.org/mqtt-plan#ResultAttribute"/>
+  <rdf:Description rdf:nodeID="A30">
+    <owl:onClass rdf:resource="http://w3id.org/mqtt-plan#TopicFilter"/>
+    <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+    <owl:onProperty rdf:resource="http://w3id.org/mqtt-plan#packetAtt"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A1">
+    <owl:onClass rdf:resource="http://w3id.org/mqtt-plan#PacketID"/>
+    <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+    <owl:onProperty rdf:resource="http://w3id.org/mqtt-plan#packetAtt"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A29">
+    <rdf:rest rdf:nodeID="A28"/>
+    <rdf:first rdf:nodeID="A14"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/mqtt-plan#hasActionResult">
+    <rdfs:label xml:lang="en">hasActionResult</rdfs:label>
+    <rdfs:comment xml:lang="en">mqtt-plan:hasActionResult links mqtt-plan:BrokerAction to mqtt-plan:ActionResult.</rdfs:comment>
+    <rdfs:range rdf:resource="http://w3id.org/mqtt-plan#ActionResult"/>
+    <rdfs:domain rdf:resource="http://w3id.org/mqtt-plan#BrokerAction"/>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/net/p-plan#hasOutputVar"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A51">
+    <owl:onClass rdf:resource="http://w3id.org/mqtt-plan#Unsubscribe"/>
+    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:qualifiedCardinality>
+    <owl:onProperty rdf:resource="http://w3id.org/mqtt-plan#triggers"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A40">
+    <owl:onClass rdf:resource="http://w3id.org/mqtt-plan#KeepAlive"/>
+    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:qualifiedCardinality>
+    <owl:onProperty rdf:resource="http://w3id.org/mqtt-plan#packetAtt"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://w3id.org/mqtt-plan#DisconnectCP">
+    <rdfs:label xml:lang="en">Disconnect CP</rdfs:label>
+    <rdfs:comment xml:lang="en">A description of a control packet which indicates that a client wants to close a connection with a message broker.</rdfs:comment>
+    <rdfs:subClassOf rdf:nodeID="A43"/>
+    <rdfs:subClassOf rdf:nodeID="A33"/>
+    <rdfs:subClassOf rdf:nodeID="A20"/>
+    <rdfs:subClassOf rdf:nodeID="A45"/>
+    <rdfs:subClassOf rdf:nodeID="A36"/>
+    <rdfs:subClassOf rdf:resource="http://w3id.org/mqtt-plan#ControlPacket"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://w3id.org/mqtt-plan#PingResponse">
@@ -199,14 +585,14 @@ For example, such agent can refer to the client that was disconnected by the mqt
     <rdfs:subClassOf rdf:resource="http://w3id.org/mqtt-plan#BrokerAction"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://w3id.org/mqtt-plan#SubscribeAcknowledgment">
-    <rdfs:label xml:lang="en">Subscribe Acknowledgment</rdfs:label>
-    <rdfs:comment xml:lang="en">A step describing a planned activity of sending an acknowledgment of a successfull subscription from specific topics to a  client. The client is described  as the mqtt-prov:Sender attribute and topics are described by the mqtt-plan:TopicFilter  attribute associated with the mqtt-prov:ControlPacket which triggers this action or an action which generated mqtt-plan:ActionResult that triggers this action.</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="http://w3id.org/mqtt-plan#Acknowledgment"/>
+  <rdf:Description rdf:about="http://w3id.org/mqtt-plan#Target">
+    <rdfs:subClassOf rdf:resource="http://w3id.org/mqtt-plan#ResultAttribute"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="A2">
-    <rdf:rest rdf:nodeID="A0"/>
-    <rdf:first rdf:resource="http://w3id.org/mqtt-plan#ActionResult"/>
+  <rdf:Description rdf:nodeID="A50">
+    <owl:onClass rdf:resource="http://w3id.org/mqtt-plan#PingResponse"/>
+    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:qualifiedCardinality>
+    <owl:onProperty rdf:resource="http://w3id.org/mqtt-plan#triggers"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
   </rdf:Description>
 </rdf:RDF>

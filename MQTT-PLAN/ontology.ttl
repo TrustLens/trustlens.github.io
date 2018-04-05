@@ -3,130 +3,140 @@
 @prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix terms:   <http://purl.org/dc/terms/> .
 @prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix mqtt-plan:  <http://w3id.org/mqtt-plan#> .
 @prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix vann:    <http://purl.org/vocab/vann/> .
 @prefix prov:    <http://www.w3.org/ns/prov#> .
 
-:Disconnect
+mqtt-plan:UnsubscribeCP
       a       owl:Class ;
-      rdfs:comment "A step describing a planned activity of disconnecting a client. The client is described  as the mqtt-prov:Sender of the mqtt-prov:ControlPacket which triggers this action. The mqtt-plan:ActionResult gennerated by this activity can include an mqtt-plan:Reason determining the cause of this action, for example, a failed authorisation."@en ;
-      rdfs:label "Disconnect"@en ;
-      rdfs:subClassOf :BrokerAction .
+      rdfs:comment "A description of a control packet which indicates that a client wants to unsubscribe from all topics matching the specified topic filter."@en ;
+      rdfs:label "Unsubscribe CP"@en ;
+      rdfs:subClassOf mqtt-plan:ControlPacket ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:onClass mqtt-plan:KeepAlive ;
+                owl:onProperty mqtt-plan:packetAtt ;
+                owl:qualifiedCardinality
+                        "0"^^xsd:nonNegativeInteger
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxQualifiedCardinality
+                        "1"^^xsd:nonNegativeInteger ;
+                owl:onClass mqtt-plan:PacketID ;
+                owl:onProperty mqtt-plan:packetAtt
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:onClass mqtt-plan:Message ;
+                owl:onProperty mqtt-plan:packetAtt ;
+                owl:qualifiedCardinality
+                        "0"^^xsd:nonNegativeInteger
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:onClass mqtt-plan:TopicName ;
+                owl:onProperty mqtt-plan:packetAtt ;
+                owl:qualifiedCardinality
+                        "0"^^xsd:nonNegativeInteger
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxQualifiedCardinality
+                        "1"^^xsd:nonNegativeInteger ;
+                owl:onClass mqtt-plan:TopicFilter ;
+                owl:onProperty mqtt-plan:packetAtt
+              ] .
 
-:packetAtt
-      a       owl:ObjectProperty ;
-      rdfs:comment "mqtt-plan:packetAtt links the mqtt-plan:ControlPacket to mqtt-plan:PacketAttribute."@en ;
-      rdfs:domain :ControlPacket ;
-      rdfs:label "packetAtt"@en ;
-      rdfs:range :PacketAttribute .
-
-:Sender
-      a       owl:Class ;
-      rdfs:comment "A variable describing an agent responsible for sending an mqtt-plan:ControlPacket."@en ;
-      rdfs:label "Sender"@en ;
-      rdfs:subClassOf :PacketAttribute .
-
-:Unsubscribe
-      a       owl:Class ;
-      rdfs:comment "A step describing a planned activity of unsubscribing a client from specific topics. The client is described  as the mqtt-prov:Sender of the mqtt-prov:ControlPacket which triggers this action. The topics from which the client is unsubscribed are described by the mqtt-plan:TopicFilter attribute associated with the mqtt-plan:ControlPacket triggering this action. This step represents an activity performed by the broker on internally maintained list of topic subscribtions, it does not imply any response is sent to the client. The acknowledgment of unsubscribing can be modeled with  mqtt-plan:UnsubscribeAcknowledgment broker action triggered by the mqtt-plan:ActionResult of this step."@en ;
-      rdfs:label "Unsubscribe"@en ;
-      rdfs:subClassOf :BrokerAction .
-
-:PacketAttribute
+mqtt-plan:PacketAttribute
       a       owl:Class ;
       rdfs:comment "A variable representing a particular aspect of the mqtt-plan:ControlPacket."@en ;
       rdfs:label "Packet Attribute"@en ;
       rdfs:subClassOf <http://purl.org/net/p-plan#Variable> .
 
-:ControlPacket
-      a       owl:Class ;
-      rdfs:comment "A variabale describing an MQTT control packet that has been interpreted and contextualised by the message broker (e.g. an explicit associations between the sender and the control packet are recorded even if such information is not present in the raw MQTT control packet structure)."@en ;
-      rdfs:label "Control Packet"@en ;
-      rdfs:subClassOf <http://purl.org/net/p-plan#Variable> .
-
-:BrokerAction
-      a       owl:Class ;
-      rdfs:comment "An abstract concept representing a planned activity that broker performs in response to receiving an mqtt-plan:ControlPacket or as a result of some mqtt-plan:ActionResult produced by another mqtt-plan:BrokerAction."@en ;
-      rdfs:label "Broker Action"@en ;
-      rdfs:subClassOf <http://purl.org/net/p-plan#Step> .
-
-:UnsubscribeAcknowledgment
+mqtt-plan:UnsubscribeAcknowledgment
       a       owl:Class ;
       rdfs:comment "A step describing a planned activity of sending an acknowledgment of a successfull unsubscription from specific topics to a  client. The client is described  as the mqtt-prov:Sender attribute and topics are described by the mqtt-plan:TopicFilter attribute associated with the mqtt-prov:ControlPacket which triggers this action or an action which generated mqtt-plan:ActionResult that triggers this action."@en ;
       rdfs:label "Unsubscribe Acknowledgment"@en ;
-      rdfs:subClassOf :Acknowledgment .
+      rdfs:subClassOf mqtt-plan:Acknowledgment .
 
-:Publish
-      a       owl:Class ;
-      rdfs:comment """A step describing a planned activity of forwarding a message from one client (sender) to all clients registered to receive messages under the specified topic. The sender is described  as the mqtt-prov:Sender of the mqtt-prov:ControlPacket which triggers this action. The topic is described by the mqtt-plan:TopicName attribute associated with the mqtt-plan:ControlPacket triggering this action. And the message of the topic can be described as mqtt-plan:Message attribute associated with the mqtt-plan:ControlPacket triggering this action.
-
-This step represents an activity performed by the broker and implies that the message was forwarded to a single or multiple agents captured in the mqtt-plan:ActionResult of this step using mqtt-plan:AffectedAgent or mqtt-plan:AffectedAgents."""@en ;
-      rdfs:label "Publish"@en ;
-      rdfs:subClassOf :BrokerAction .
-
-:KeepAlive
+mqtt-plan:KeepAlive
       a       owl:Class ;
       rdfs:comment """A variable describing a maximum time interval (meassured in seconds) between two control packets sent by a client to prevent diconnection from the broker. 
 
 Note: as per MQTT standard, value 0 means that this  feature should be deactivetated, however, broker still may close the connection if it determines the client is inactive or non-responsive regrdless of Keep Alive value provided."""@en ;
       rdfs:label "Keep Alive"@en ;
-      rdfs:subClassOf :PacketAttribute .
+      rdfs:subClassOf mqtt-plan:PacketAttribute .
 
-:TopicName
+mqtt-plan:PublishCP
       a       owl:Class ;
-      rdfs:comment "A variable describing a topic name."@en ;
-      rdfs:label "Topic Name"@en ;
-      rdfs:subClassOf :PacketAttribute .
+      rdfs:comment "A description of a control packet which indicates that a client wants to publish a message under a specific topic."@en ;
+      rdfs:label "Publish CP"@en ;
+      rdfs:subClassOf mqtt-plan:ControlPacket ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:onClass mqtt-plan:TopicFilter ;
+                owl:onProperty mqtt-plan:packetAtt ;
+                owl:qualifiedCardinality
+                        "0"^^xsd:nonNegativeInteger
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxQualifiedCardinality
+                        "1"^^xsd:nonNegativeInteger ;
+                owl:onClass mqtt-plan:Message ;
+                owl:onProperty mqtt-plan:packetAtt
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:onClass mqtt-plan:KeepAlive ;
+                owl:onProperty mqtt-plan:packetAtt ;
+                owl:qualifiedCardinality
+                        "0"^^xsd:nonNegativeInteger
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxQualifiedCardinality
+                        "1"^^xsd:nonNegativeInteger ;
+                owl:onClass mqtt-plan:PacketID ;
+                owl:onProperty mqtt-plan:packetAtt
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxQualifiedCardinality
+                        "1"^^xsd:nonNegativeInteger ;
+                owl:onClass mqtt-plan:TopicName ;
+                owl:onProperty mqtt-plan:packetAtt
+              ] .
 
-:Connect
+mqtt-plan:Connect
       a       owl:Class ;
       rdfs:comment "A step describing a planned activity of connecting a client. The client is described  as the mqtt-prov:Sender of the mqtt-prov:ControlPacket which triggers this action."@en ;
       rdfs:label "Connect"@en ;
-      rdfs:subClassOf :BrokerAction .
+      rdfs:subClassOf mqtt-plan:BrokerAction .
 
-:TopicFilter
-      a       owl:Class ;
-      rdfs:comment "A variable describing the topic filter that is used by a client to subscribe to one or a set of topic."@en ;
-      rdfs:label "Topic Filter"@en ;
-      rdfs:subClassOf :PacketAttribute .
-
-:PacketID
-      a       owl:Class ;
-      rdfs:comment "A variable describing a 2 byte packet identifier associated with an mqtt-plan:ControlPacket (e.g. as part of topic subscription request). As per MQTT specification, packet identifiers used between a client and a broker can be reused once the acknowledgment of the packet has been sent."@en ;
-      rdfs:label "Packet ID"@en ;
-      rdfs:subClassOf :PacketAttribute .
-
-:ResultAttribute
+mqtt-plan:ResultAttribute
       a       owl:Class ;
       rdfs:comment "A variable representing a particular aspect of the mqtt-plan:ActionResult."@en ;
       rdfs:label "Result Attribute"@en ;
       rdfs:subClassOf <http://purl.org/net/p-plan#Variable> .
 
-:ConnectAcknowledgment
+mqtt-plan:ConnectAcknowledgment
       a       owl:Class ;
       rdfs:comment "A step describing a planned activity of sending an acknowledgment of a successfull connection request to a  client. The client is described  as the mqtt-prov:Sender of the mqtt-prov:ControlPacket which triggers this action or an action which generated mqtt-plan:ActionResult that triggers this action."@en ;
       rdfs:label "Connect Acknowledgment"@en ;
-      rdfs:subClassOf :Acknowledgment .
+      rdfs:subClassOf mqtt-plan:Acknowledgment .
 
-:Subscribe
+mqtt-plan:CompletionState
       a       owl:Class ;
-      rdfs:comment "A step describing a planned activity of subscribing a client from specific topics. The client is described  as the mqtt-prov:Sender of the mqtt-prov:ControlPacket which triggers this action. The topics for which the client is subscribed are described by the mqtt-plan:TopicFilter attribute associated with the mqtt-plan:ControlPacket triggering this action. This step represents an activity performed by the broker on internally maintained list of topic subscribtions, it does not imply any response is sent to the client. The acknowledgment of subscribing can be modeled with  mqtt-plan:SubscribeAcknowledgment broker action triggered by the mqtt-plan:ActionResult of this step."@en ;
-      rdfs:label "Subscribe"@en ;
-      rdfs:subClassOf :BrokerAction .
-
-:AffectedAgents
-      a       owl:Class ;
-      rdfs:comment """A variable describing a collection of agents associated with mqtt-plan:ActionResult. The mqtt-plan:BrokerAction that generated the action result must have been targeted on all agents who are members of this collection. 
- 
-For example,  such collection can describe the recipients to whom the broker forwarded a received message as part of mqtt-plan:Publish action."""@en ;
-      rdfs:label "Affected Agents"@en ;
-      rdfs:subClassOf :ResultAttribute .
+      rdfs:subClassOf mqtt-plan:ResultAttribute .
 
 <http://w3id.org/mqtt-plan>
       a       owl:Ontology ;
       rdfs:comment """The MQTT-PLAN ontology defines a set of concepts for describing plans of MQTT enabled message brokers. The vocabulary for plan descriptions forms an extension to the high level concepts defined in P-PLAN. Execution trace of such plans is then modelled using PROV-O.
 
-In order to keep the vocabulary lightweight, this version of the ontology does not cover some of the functionalities specified in MQTT 3.1.1. These include: message attributes defining the required quality of service and associated acknowledgments, will messages,  retaining of messages by the server, session flags. Username and password flags are also not captured explicitly for security reasons.
+In order to keep the vocabulary lightweight, this version of the ontology does not cover some of the functionalities specified in MQTT 3.1.1. These include: publish attributes defining the required quality of service and associated acknowledgments, will messages,  retaining of messages by the server, session flags. Username and password flags are also not captured explicitly for security reasons.
 
 Should these features be required, they may be incorporated in future revisons of the ontology. Please contact the authors with your suggestions."""@en ;
       terms:creator "Peter Edwards"@en , "Waqar Asif"@en , "Milan Markovic"@en , "David Corsar"@en ;
@@ -134,64 +144,421 @@ Should these features be required, they may be incorporated in future revisons o
       owl:imports <http://purl.org/net/p-plan#> , <http://www.w3.org/ns/prov-o-20130430> ;
       owl:versionInfo "Version 1.0"@en .
 
-:Acknowledgment
+mqtt-plan:Acknowledgment
       a       owl:Class ;
       rdfs:comment "A step describing a planned activity of sending an acknowledgment request to a  client. The client is described  as the mqtt-prov:Sender of the mqtt-prov:ControlPacket which triggers this action or an action whihc generated mqtt-plan:ActionResult that triggered this action."@en ;
       rdfs:label "Acknowledgment"@en ;
-      rdfs:subClassOf :BrokerAction .
+      rdfs:subClassOf mqtt-plan:BrokerAction .
 
-:ActionResult
-      a       owl:Class ;
-      rdfs:comment "A variable describing an abstract result object of mqtt-plan:BrokerAction that can be further described by mqtt-plan:ResultAttribute."@en ;
-      rdfs:label "Action Result"@en ;
-      rdfs:subClassOf <http://purl.org/net/p-plan#Variable> .
-
-:resultAtt
+mqtt-plan:resultAtt
       a       owl:ObjectProperty ;
       rdfs:comment "mqtt-plan:resultAtt links the mqtt-plan:ActionResult to mqtt-plan:ResultAttribute."@en ;
-      rdfs:domain :ActionResult ;
+      rdfs:domain mqtt-plan:ActionResult ;
       rdfs:label "resultAtt"@en ;
-      rdfs:range :ResultAttribute .
+      rdfs:range mqtt-plan:ResultAttribute .
 
-:Message
-      a       owl:Class ;
-      rdfs:comment "A varible describing the payload of an mqtt-plan:ControlPacket containing  an application message. For example, a sensor reading."@en ;
-      rdfs:label "Message"@en ;
-      rdfs:subClassOf :PacketAttribute .
-
-:triggers
+mqtt-plan:hasActionInput
       a       owl:ObjectProperty ;
-      rdfs:domain
-              [ a       owl:Class ;
-                owl:unionOf (:ActionResult :ControlPacket)
-              ] ;
-      rdfs:label "triggers"@en ;
-      rdfs:range :BrokerAction .
+      rdfs:comment "mqtt-plan:hasActionInput links attributes of mqtt-plan:Control packet to mqtt-plan:BrokerAction."@en ;
+      rdfs:domain mqtt-plan:BrokerAction ;
+      rdfs:label "hasActionInput"@en ;
+      rdfs:range mqtt-plan:PacketAttribute ;
+      rdfs:subPropertyOf <http://purl.org/net/p-plan#hasInputVar> ;
+      owl:propertyChainAxiom
+              ([ owl:inverseOf mqtt-plan:triggers
+                ] mqtt-plan:resultAtt) , ([ owl:inverseOf mqtt-plan:triggers
+                ] mqtt-plan:packetAtt) .
 
-:Reason
+mqtt-plan:Reason
       a       owl:Class ;
       rdfs:comment """A variable describing an mqtt-plan:ActionResult atribute denoting a reason for an mqtt-plan:BrokerAction that generated this action result.
 
 For example, p-plan:Entities corresponding to this variable might describe a client's attempt to requerst a broker action for which it is not authorised (e.g. subscribing to a private topic)."""@en ;
       rdfs:label "Reason"@en ;
-      rdfs:subClassOf :ResultAttribute .
+      rdfs:subClassOf mqtt-plan:ResultAttribute .
 
-:AffectedAgent
+mqtt-plan:SubscribeCP
+      a       owl:Class ;
+      rdfs:comment "A description of a control packet which indicates that a client wants to subscribe to all topics matching the specified topic filter."@en ;
+      rdfs:label "Subscribe CP"@en ;
+      rdfs:subClassOf mqtt-plan:ControlPacket ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxQualifiedCardinality
+                        "1"^^xsd:nonNegativeInteger ;
+                owl:onClass mqtt-plan:TopicFilter ;
+                owl:onProperty mqtt-plan:packetAtt
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxQualifiedCardinality
+                        "1"^^xsd:nonNegativeInteger ;
+                owl:onClass mqtt-plan:PacketID ;
+                owl:onProperty mqtt-plan:packetAtt
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:onClass mqtt-plan:KeepAlive ;
+                owl:onProperty mqtt-plan:packetAtt ;
+                owl:qualifiedCardinality
+                        "0"^^xsd:nonNegativeInteger
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:onClass mqtt-plan:Message ;
+                owl:onProperty mqtt-plan:packetAtt ;
+                owl:qualifiedCardinality
+                        "0"^^xsd:nonNegativeInteger
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:onClass mqtt-plan:TopicName ;
+                owl:onProperty mqtt-plan:packetAtt ;
+                owl:qualifiedCardinality
+                        "0"^^xsd:nonNegativeInteger
+              ] .
+
+mqtt-plan:AffectedAgent
       a       owl:Class ;
       rdfs:comment """A variable describing a single agent associated with mqtt-plan:ActionResult. The mqtt-plan:BrokerAction that generated the action result must have been targeted on this agent. 
  
 For example, such agent can refer to the client that was disconnected by the mqtt-plan:Disconnect action."""@en ;
       rdfs:label "Affected Agent"@en ;
-      rdfs:subClassOf :ResultAttribute .
+      rdfs:subClassOf mqtt-plan:Target .
 
-:PingResponse
-      a       owl:Class ;
-      rdfs:comment "A step describing a planned activity of responding to a PING request from a client. The client is described  as the mqtt-prov:Sender of the mqtt-prov:ControlPacket which triggers this action."@en ;
-      rdfs:label "Ping response"@en ;
-      rdfs:subClassOf :BrokerAction .
-
-:SubscribeAcknowledgment
+mqtt-plan:SubscribeAcknowledgment
       a       owl:Class ;
       rdfs:comment "A step describing a planned activity of sending an acknowledgment of a successfull subscription from specific topics to a  client. The client is described  as the mqtt-prov:Sender attribute and topics are described by the mqtt-plan:TopicFilter  attribute associated with the mqtt-prov:ControlPacket which triggers this action or an action which generated mqtt-plan:ActionResult that triggers this action."@en ;
       rdfs:label "Subscribe Acknowledgment"@en ;
-      rdfs:subClassOf :Acknowledgment .
+      rdfs:subClassOf mqtt-plan:Acknowledgment .
+
+mqtt-plan:packetAtt
+      a       owl:ObjectProperty ;
+      rdfs:comment "mqtt-plan:packetAtt links the mqtt-plan:ControlPacket to mqtt-plan:PacketAttribute."@en ;
+      rdfs:domain mqtt-plan:ControlPacket ;
+      rdfs:label "packetAtt"@en ;
+      rdfs:range mqtt-plan:PacketAttribute .
+
+mqtt-plan:Disconnect
+      a       owl:Class ;
+      rdfs:comment "A step describing a planned activity of disconnecting a client. The client is described  as the mqtt-prov:Sender of the mqtt-prov:ControlPacket which triggers this action. The mqtt-plan:ActionResult gennerated by this activity can include an mqtt-plan:Reason determining the cause of this action, for example, a failed authorisation."@en ;
+      rdfs:label "Disconnect"@en ;
+      rdfs:subClassOf mqtt-plan:BrokerAction .
+
+mqtt-plan:Sender
+      a       owl:Class ;
+      rdfs:comment "A variable describing an agent responsible for sending an mqtt-plan:ControlPacket."@en ;
+      rdfs:label "Sender"@en ;
+      rdfs:subClassOf mqtt-plan:PacketAttribute .
+
+mqtt-plan:Unsubscribe
+      a       owl:Class ;
+      rdfs:comment "A step describing a planned activity of unsubscribing a client from specific topics. The client is described  as the mqtt-prov:Sender of the mqtt-prov:ControlPacket which triggers this action. The topics from which the client is unsubscribed are described by the mqtt-plan:TopicFilter attribute associated with the mqtt-plan:ControlPacket triggering this action. This step represents an activity performed by the broker on internally maintained list of topic subscribtions, it does not imply any response is sent to the client. The acknowledgment of unsubscribing can be modeled with  mqtt-plan:UnsubscribeAcknowledgment broker action triggered by the mqtt-plan:ActionResult of this step."@en ;
+      rdfs:label "Unsubscribe"@en ;
+      rdfs:subClassOf mqtt-plan:BrokerAction .
+
+mqtt-plan:ControlPacket
+      a       owl:Class ;
+      rdfs:comment "A variabale describing an MQTT control packet that has been interpreted and contextualised by the message broker (e.g. an explicit associations between the sender and the control packet are recorded even if such information is not present in the raw MQTT control packet structure)."@en ;
+      rdfs:label "Control Packet"@en ;
+      rdfs:subClassOf <http://purl.org/net/p-plan#Variable> ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:minQualifiedCardinality
+                        "1"^^xsd:nonNegativeInteger ;
+                owl:onClass mqtt-plan:BrokerAction ;
+                owl:onProperty mqtt-plan:triggers
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxQualifiedCardinality
+                        "1"^^xsd:nonNegativeInteger ;
+                owl:onClass mqtt-plan:Sender ;
+                owl:onProperty mqtt-plan:packetAtt
+              ] .
+
+mqtt-plan:BrokerAction
+      a       owl:Class ;
+      rdfs:comment "An abstract concept representing a planned activity that broker performs in response to receiving an mqtt-plan:ControlPacket or as a result of some mqtt-plan:ActionResult produced by another mqtt-plan:BrokerAction."@en ;
+      rdfs:label "Broker Action"@en ;
+      rdfs:subClassOf <http://purl.org/net/p-plan#Step> ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxQualifiedCardinality
+                        "1"^^xsd:nonNegativeInteger ;
+                owl:onClass mqtt-plan:ActionResult ;
+                owl:onProperty mqtt-plan:hasActionResult
+              ] .
+
+mqtt-plan:Publish
+      a       owl:Class ;
+      rdfs:comment """A step describing a planned activity of forwarding a message from one client (sender) to all clients registered to receive messages under the specified topic. The sender is described  as the mqtt-prov:Sender of the mqtt-prov:ControlPacket which triggers this action. The topic is described by the mqtt-plan:TopicName attribute associated with the mqtt-plan:ControlPacket triggering this action. And the message of the topic can be described as mqtt-plan:Message attribute associated with the mqtt-plan:ControlPacket triggering this action.
+
+This step represents an activity performed by the broker and implies that the message was forwarded to a single or multiple agents captured in the mqtt-plan:ActionResult of this step using mqtt-plan:AffectedAgent or mqtt-plan:AffectedAgents."""@en ;
+      rdfs:label "Publish"@en ;
+      rdfs:subClassOf mqtt-plan:BrokerAction .
+
+mqtt-plan:TopicName
+      a       owl:Class ;
+      rdfs:comment "A variable describing a topic name."@en ;
+      rdfs:label "Topic Name"@en ;
+      rdfs:subClassOf mqtt-plan:PacketAttribute .
+
+mqtt-plan:PingCP
+      a       owl:Class ;
+      rdfs:comment "A description of a control packet which indicates that a client is still active."@en ;
+      rdfs:label "Ping CP"@en ;
+      rdfs:subClassOf mqtt-plan:ControlPacket ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:onClass mqtt-plan:TopicName ;
+                owl:onProperty mqtt-plan:packetAtt ;
+                owl:qualifiedCardinality
+                        "0"^^xsd:nonNegativeInteger
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:onClass mqtt-plan:Message ;
+                owl:onProperty mqtt-plan:packetAtt ;
+                owl:qualifiedCardinality
+                        "0"^^xsd:nonNegativeInteger
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:onClass mqtt-plan:PacketID ;
+                owl:onProperty mqtt-plan:packetAtt ;
+                owl:qualifiedCardinality
+                        "0"^^xsd:nonNegativeInteger
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:onClass mqtt-plan:KeepAlive ;
+                owl:onProperty mqtt-plan:packetAtt ;
+                owl:qualifiedCardinality
+                        "0"^^xsd:nonNegativeInteger
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:onClass mqtt-plan:TopicFilter ;
+                owl:onProperty mqtt-plan:packetAtt ;
+                owl:qualifiedCardinality
+                        "0"^^xsd:nonNegativeInteger
+              ] .
+
+mqtt-plan:TopicFilter
+      a       owl:Class ;
+      rdfs:comment "A variable describing the topic filter that is used by a client to subscribe to one or a set of topic."@en ;
+      rdfs:label "Topic Filter"@en ;
+      rdfs:subClassOf mqtt-plan:PacketAttribute .
+
+mqtt-plan:PacketID
+      a       owl:Class ;
+      rdfs:comment "A variable describing a 2 byte packet identifier associated with an mqtt-plan:ControlPacket (e.g. as part of topic subscription request). As per MQTT specification, packet identifiers used between a client and a broker can be reused once the acknowledgment of the packet has been sent."@en ;
+      rdfs:label "Packet ID"@en ;
+      rdfs:subClassOf mqtt-plan:PacketAttribute .
+
+mqtt-plan:Subscribe
+      a       owl:Class ;
+      rdfs:comment "A step describing a planned activity of subscribing a client from specific topics. The client is described  as the mqtt-prov:Sender of the mqtt-prov:ControlPacket which triggers this action. The topics for which the client is subscribed are described by the mqtt-plan:TopicFilter attribute associated with the mqtt-plan:ControlPacket triggering this action. This step represents an activity performed by the broker on internally maintained list of topic subscribtions, it does not imply any response is sent to the client. The acknowledgment of subscribing can be modeled with  mqtt-plan:SubscribeAcknowledgment broker action triggered by the mqtt-plan:ActionResult of this step."@en ;
+      rdfs:label "Subscribe"@en ;
+      rdfs:subClassOf mqtt-plan:BrokerAction .
+
+mqtt-plan:AffectedAgents
+      a       owl:Class ;
+      rdfs:comment """A variable describing a collection of agents associated with mqtt-plan:ActionResult. The mqtt-plan:BrokerAction that generated the action result must have been targeted on all agents who are members of this collection. 
+ 
+For example,  such collection can describe the recipients to whom the broker forwarded a received message as part of mqtt-plan:Publish action."""@en ;
+      rdfs:label "Affected Agents"@en ;
+      rdfs:subClassOf mqtt-plan:Target .
+
+mqtt-plan:ActionResult
+      a       owl:Class ;
+      rdfs:comment "A variable describing an abstract result object of mqtt-plan:BrokerAction that can be further described by mqtt-plan:ResultAttribute."@en ;
+      rdfs:label "Action Result"@en ;
+      rdfs:subClassOf <http://purl.org/net/p-plan#Variable> ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:onClass mqtt-plan:Subscribe ;
+                owl:onProperty mqtt-plan:triggers ;
+                owl:qualifiedCardinality
+                        "0"^^xsd:nonNegativeInteger
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxQualifiedCardinality
+                        "1"^^xsd:nonNegativeInteger ;
+                owl:onClass mqtt-plan:Target ;
+                owl:onProperty mqtt-plan:resultAtt
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:minQualifiedCardinality
+                        "1"^^xsd:nonNegativeInteger ;
+                owl:onClass mqtt-plan:CompletionState ;
+                owl:onProperty mqtt-plan:resultAtt
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxQualifiedCardinality
+                        "1"^^xsd:nonNegativeInteger ;
+                owl:onClass mqtt-plan:Acknowledgment ;
+                owl:onProperty mqtt-plan:triggers
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:onClass mqtt-plan:Unsubscribe ;
+                owl:onProperty mqtt-plan:triggers ;
+                owl:qualifiedCardinality
+                        "0"^^xsd:nonNegativeInteger
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxQualifiedCardinality
+                        "1"^^xsd:nonNegativeInteger ;
+                owl:onClass mqtt-plan:Reason ;
+                owl:onProperty mqtt-plan:resultAtt
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:onClass mqtt-plan:Publish ;
+                owl:onProperty mqtt-plan:triggers ;
+                owl:qualifiedCardinality
+                        "0"^^xsd:nonNegativeInteger
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxQualifiedCardinality
+                        "1"^^xsd:nonNegativeInteger ;
+                owl:onClass mqtt-plan:Disconnect ;
+                owl:onProperty mqtt-plan:triggers
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:onClass mqtt-plan:Connect ;
+                owl:onProperty mqtt-plan:triggers ;
+                owl:qualifiedCardinality
+                        "0"^^xsd:nonNegativeInteger
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:onClass mqtt-plan:PingResponse ;
+                owl:onProperty mqtt-plan:triggers ;
+                owl:qualifiedCardinality
+                        "0"^^xsd:nonNegativeInteger
+              ] .
+
+mqtt-plan:triggers
+      a       owl:ObjectProperty ;
+      rdfs:comment "mqtt-plan:trigers denotes that mqtt-plan:BrokerAction is executed as a result of plan variable describing mqtt-plan:ControlPacket or mqtt-plan:ActionResult."@en ;
+      rdfs:domain
+              [ a       owl:Class ;
+                owl:unionOf (mqtt-plan:ActionResult mqtt-plan:ControlPacket)
+              ] ;
+      rdfs:label "triggers"@en ;
+      rdfs:range mqtt-plan:BrokerAction .
+
+mqtt-plan:Message
+      a       owl:Class ;
+      rdfs:comment "A varible describing the payload of an mqtt-plan:ControlPacket containing  an application message. For example, a sensor reading."@en ;
+      rdfs:label "Message"@en ;
+      rdfs:subClassOf mqtt-plan:PacketAttribute .
+
+mqtt-plan:ConnectCP
+      a       owl:Class ;
+      rdfs:comment "A description of a control packet which indicates that a client wants to establish a connection with a message broker."@en ;
+      rdfs:label "Connect CP"@en ;
+      rdfs:subClassOf mqtt-plan:ControlPacket ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:onClass mqtt-plan:PacketID ;
+                owl:onProperty mqtt-plan:packetAtt ;
+                owl:qualifiedCardinality
+                        "0"^^xsd:nonNegativeInteger
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:onClass mqtt-plan:TopicFilter ;
+                owl:onProperty mqtt-plan:packetAtt ;
+                owl:qualifiedCardinality
+                        "0"^^xsd:nonNegativeInteger
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:onClass mqtt-plan:Message ;
+                owl:onProperty mqtt-plan:packetAtt ;
+                owl:qualifiedCardinality
+                        "0"^^xsd:nonNegativeInteger
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:onClass mqtt-plan:TopicName ;
+                owl:onProperty mqtt-plan:packetAtt ;
+                owl:qualifiedCardinality
+                        "0"^^xsd:nonNegativeInteger
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:maxQualifiedCardinality
+                        "1"^^xsd:nonNegativeInteger ;
+                owl:onClass mqtt-plan:KeepAlive ;
+                owl:onProperty mqtt-plan:packetAtt
+              ] .
+
+mqtt-plan:hasActionResult
+      a       owl:ObjectProperty ;
+      rdfs:comment "mqtt-plan:hasActionResult links mqtt-plan:BrokerAction to mqtt-plan:ActionResult."@en ;
+      rdfs:domain mqtt-plan:BrokerAction ;
+      rdfs:label "hasActionResult"@en ;
+      rdfs:range mqtt-plan:ActionResult ;
+      rdfs:subPropertyOf <http://purl.org/net/p-plan#hasOutputVar> .
+
+mqtt-plan:DisconnectCP
+      a       owl:Class ;
+      rdfs:comment "A description of a control packet which indicates that a client wants to close a connection with a message broker."@en ;
+      rdfs:label "Disconnect CP"@en ;
+      rdfs:subClassOf mqtt-plan:ControlPacket ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:onClass mqtt-plan:PacketID ;
+                owl:onProperty mqtt-plan:packetAtt ;
+                owl:qualifiedCardinality
+                        "0"^^xsd:nonNegativeInteger
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:onClass mqtt-plan:TopicFilter ;
+                owl:onProperty mqtt-plan:packetAtt ;
+                owl:qualifiedCardinality
+                        "0"^^xsd:nonNegativeInteger
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:onClass mqtt-plan:TopicName ;
+                owl:onProperty mqtt-plan:packetAtt ;
+                owl:qualifiedCardinality
+                        "0"^^xsd:nonNegativeInteger
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:onClass mqtt-plan:KeepAlive ;
+                owl:onProperty mqtt-plan:packetAtt ;
+                owl:qualifiedCardinality
+                        "0"^^xsd:nonNegativeInteger
+              ] ;
+      rdfs:subClassOf
+              [ a       owl:Restriction ;
+                owl:onClass mqtt-plan:Message ;
+                owl:onProperty mqtt-plan:packetAtt ;
+                owl:qualifiedCardinality
+                        "0"^^xsd:nonNegativeInteger
+              ] .
+
+mqtt-plan:PingResponse
+      a       owl:Class ;
+      rdfs:comment "A step describing a planned activity of responding to a PING request from a client. The client is described  as the mqtt-prov:Sender of the mqtt-prov:ControlPacket which triggers this action."@en ;
+      rdfs:label "Ping response"@en ;
+      rdfs:subClassOf mqtt-plan:BrokerAction .
+
+mqtt-plan:Target
+      a       owl:Class ;
+      rdfs:subClassOf mqtt-plan:ResultAttribute .
